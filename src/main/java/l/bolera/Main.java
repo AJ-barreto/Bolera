@@ -5,6 +5,10 @@
 
 package l.bolera;
 
+import Controlador.Controlador_ingresar;
+import Modelo.Modelo_ingresar;
+import Vista.Vista_ingresar;
+
 /**
  *
  * @author Andor
@@ -12,6 +16,12 @@ package l.bolera;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        
+        Modelo_ingresar mod = new Modelo_ingresar();
+        Vista_ingresar view = new Vista_ingresar();
+        
+        Controlador_ingresar ctrl = new Controlador_ingresar(view, mod);
+        ctrl.inciar();
+        view.setVisible(true);
     }
 }

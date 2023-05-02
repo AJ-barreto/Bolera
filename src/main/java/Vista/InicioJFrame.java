@@ -4,6 +4,10 @@
  */
 package Vista;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 /**
  *
  * @author Andor
@@ -13,6 +17,46 @@ public class InicioJFrame extends javax.swing.JFrame {
     /**
      * Creates new form InicioJFrame
      */
+    
+    /*public class Reloj {
+    String hora, minutos, segundos, ampm;
+    Calendar calendario;
+    Thread h1;
+    
+    public Reloj(){
+        h1 = new Thread((Runnable) this);
+        h1.start();
+    }
+    
+    public void run(){
+        Thread ct = Thread.currentThread();
+        
+        while(ct == h1){
+            calcula();
+            jLabel1.setText(hora + ":"+ minutos+ ":"+ segundos+ " "+ampm);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+            }
+        }
+    }
+    
+    public void calcula(){
+        Calendar calendario = new GregorianCalendar();
+        Date fechaHoraActual = new Date();
+        
+        calendario.setTime(fechaHoraActual);
+        ampm = calendario.get(Calendar.AM_PM) == Calendar.AM?"AM":"PM";
+        
+        if(ampm.equals("PM")){
+            int h = calendario.get(Calendar.HOUR_OF_DAY)-12;
+            hora = h>9?""+h:"0"+h;
+        } else {
+            minutos = calendario.get(Calendar.MINUTE)>9?""+calendario.get(Calendar.MINUTE):"0"+calendario.get(Calendar.MINUTE);
+            segundos = calendario.get(Calendar.SECOND)>9?""+calendario.get(Calendar.SECOND):"0"+calendario.get(Calendar.SECOND);
+        }
+    }
+}*/
     public InicioJFrame() {
         initComponents();
     }
@@ -26,18 +70,65 @@ public class InicioJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("jLabel1");
+
+        jLabel2.setText("jLabel2");
+
+        jLabel3.setText("jLabel3");
+
+        jMenu1.setText("Inicio");
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Elementos");
+        jMenuBar1.add(jMenu2);
+
+        jMenu3.setText("Reservaciones");
+        jMenuBar1.add(jMenu3);
+
+        jMenu4.setText("Empleados");
+        jMenuBar1.add(jMenu4);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(250, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(113, 113, 113))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jLabel1)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel3)
+                .addGap(12, 12, 12)
+                .addComponent(jLabel2)
+                .addContainerGap(138, Short.MAX_VALUE))
         );
+
+        jLabel1.getAccessibleContext().setAccessibleName("lblReloj");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -78,5 +169,13 @@ public class InicioJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }

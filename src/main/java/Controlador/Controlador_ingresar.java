@@ -5,7 +5,9 @@
 package Controlador;
 
 import Modelo.Modelo_ingresar;
+import Modelo.Modelo_inicio;
 import Vista.Vista_ingresar;
+import Vista.Vista_inicio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -30,14 +32,24 @@ public class Controlador_ingresar implements ActionListener{
         view.setLocationRelativeTo(null);
     }
     
+    @Override
     public void actionPerformed(ActionEvent e){
         model.setUsusario(view.TextUsuario.getText());
         model.setContraseña(view.TextContra.getText());
         model.inicioSesion();
         if(model.inicioSesion()){
-            JOptionPane.showConfirmDialog(view, "Inicio Sesion Correto");
+            JOptionPane.showConfirmDialog(view, "Inicio Sesion Correcto");
+            
+            Modelo_inicio mod = new Modelo_inicio();
+            Vista_inicio vist = new Vista_inicio();
+        
+            Controlador_inicio ctrl = new Controlador_inicio(vist, mod);
+            ctrl.inciar();
+            vist.setVisible(true);
+            
+            //view.close(this.view);
         } else {
-            JOptionPane.showConfirmDialog(view, "Inicio Sesion Incorrecto");
+            JOptionPane.showConfirmDialog(view, "Contraseña o Usuario Incorrecto");
         }
     }
 }

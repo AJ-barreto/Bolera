@@ -8,7 +8,7 @@ package Modelo;
  *
  * @author Andor
  */
-public class Modelo_ingresar {
+public class Modelo_empl {
     
     private String usuario;
     private String contraseña;
@@ -34,12 +34,10 @@ public class Modelo_ingresar {
     ////////////
     
     public boolean inicioSesion(){
-        if(this.usuario.equals("a") && this.contraseña.equals("a")){
+        if(this.usuario.equals("AJ") && this.contraseña.equals("Barreto")){
         return true;
         } else {
             return false;
         }
     } 
-    
-    
 }

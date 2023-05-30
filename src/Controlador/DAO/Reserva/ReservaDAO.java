@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controlador.DAO.Elementos;
+package Controlador.DAO.Reserva;
 
-import Controlador.DAO.Elementos.Interface.CalzadoDaoInterface;
-import Modelo.Elementos.Modelo_calzado;
+
+import Controlador.DAO.Reserva.Interface.ReservaDaoInterface;
+import Modelo.Reserva.Modelo_reserva;
 import database.Connector;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,16 +18,16 @@ import java.util.ArrayList;
  *
  * @author Andor
  */
-public class CalzadoDAO implements CalzadoDaoInterface{
+public class ReservaDAO implements ReservaDaoInterface{
     Connector connector = null;
     
-    public CalzadoDAO(){
+    public ReservaDAO(){
         this.connector = Connector.getInstance();
     }
     
-    public ArrayList<Modelo_calzado> findAll(){
-        String sql = "select * from ELEMENTO_BOLERA_CALZADO"; 
-        ArrayList<Modelo_calzado> lista = new ArrayList<>();
+    public ArrayList<Modelo_reserva> findAll(){
+        String sql = "select * from FORMA_DE_PAGO"; 
+        ArrayList<Modelo_reserva> lista = new ArrayList<>();
         
         try {
             Statement statement;
@@ -36,9 +37,13 @@ public class CalzadoDAO implements CalzadoDaoInterface{
             resultSet = statement.executeQuery(sql);
         
             while (resultSet.next()) {
-                Modelo_calzado model = new Modelo_calzado(
-                   resultSet.getInt("Cod_calzado"),
-                   resultSet.getInt("Calzado_numero")
+                Modelo_reserva model = new Modelo_reserva(
+                   resultSet.getInt("NO_reserva"),
+                   resultSet.getString("Fecha_hora"),
+                   resultSet.getBoolean("Estado"),
+                   resultSet.getInt("Valor_total"),
+                   resultSet.getInt("PISTA_NO_pista"),
+                   resultSet.getInt("CLIENTE_ID_identificacion")
                 );
                 lista.add(model);
             }
@@ -52,17 +57,21 @@ public class CalzadoDAO implements CalzadoDaoInterface{
         return lista;
     }
     
-    public void create(Modelo_calzado model) {
-       String sql = "insert into ELEMENTO_BOLERA_CALZADO (Cod_calzado, Calzado_numero) values (?, ?)";
+    public void create(Modelo_reserva model) {
+       String sql = "insert into FORMA_DE_PAGO (NO_reserva, Fecha_hora, Estado, Valor_total, PISTA_NO_pista, CLIENTE_ID_identificacion) values (?, ?, ?, ?, ?, ?)";
        
         try{
-            Modelo_calzado modelUpdate = (Modelo_calzado) model;
+            Modelo_reserva modelUpdate = (Modelo_reserva) model;
             
             PreparedStatement statement;
             statement = connector.getConnection().prepareStatement(sql);
             
-            statement.setInt(1, modelUpdate.getCod_calzado());
-            statement.setInt(2, modelUpdate.getCalzado_numero());
+            statement.setInt(1, modelUpdate.getNo_reserva());
+            statement.setString(2, modelUpdate.getFecha());
+            statement.setBoolean(3, modelUpdate.isEstado());
+            statement.setInt(4, modelUpdate.getValor_total());
+            statement.setInt(5, modelUpdate.getNo_pista());
+            statement.setInt(6, modelUpdate.getId());
                     
             statement.executeUpdate();
             
@@ -74,7 +83,7 @@ public class CalzadoDAO implements CalzadoDaoInterface{
     }
     
     public void deleteById(int id) {
-        String sql = "delete from ELEMENTO_BOLERA_CALZADO where Cod_calzado = ?";
+        String sql = "delete from FORMA_DE_PAGO where NO_reserva = ?";
         
         try{            
             PreparedStatement statement;
@@ -90,17 +99,21 @@ public class CalzadoDAO implements CalzadoDaoInterface{
         }
     }
     
-    public void update(Modelo_calzado model) {
-        String sql = "update ELEMENTO_BOLERA_CALZADO set Calzado_numero = ? where Cod_calzado = ?";
+    public void update(Modelo_reserva model) {
+        String sql = "update FORMA_DE_PAGO set Fecha_hora = ?, Estado = ?, Valor_total = ?, PISTA_NO_pista = ?, CLIENTE_ID_identificacion = ? where NO_reserva = ?";
        
         try{
-            Modelo_calzado modelUpdate = (Modelo_calzado) model;
+            Modelo_reserva modelUpdate = (Modelo_reserva) model;
             
             PreparedStatement statement;
             statement = connector.getConnection().prepareStatement(sql);
             
-            statement.setInt(1, modelUpdate.getCalzado_numero());
-            statement.setInt(2, modelUpdate.getCod_calzado());
+            statement.setString(1, modelUpdate.getFecha());
+            statement.setBoolean(2, modelUpdate.isEstado());
+            statement.setInt(3, modelUpdate.getValor_total());
+            statement.setInt(4, modelUpdate.getNo_pista());
+            statement.setInt(5, modelUpdate.getId());
+            statement.setInt(6, modelUpdate.getNo_reserva());
                     
             statement.executeUpdate();
             
@@ -111,9 +124,9 @@ public class CalzadoDAO implements CalzadoDaoInterface{
         }
     }
     
-    public Modelo_calzado findById(int id) {
-        String sql = "select * from ELEMENTO_BOLERA_CALZADO where Cod_calzado = ?";
-        Modelo_calzado model = null;
+    public Modelo_reserva findById(int id) {
+        String sql = "select * from FORMA_DE_PAGO where NO_reserva = ?";
+        Modelo_reserva model = null;
          
         try{
             PreparedStatement statement;
@@ -125,9 +138,13 @@ public class CalzadoDAO implements CalzadoDaoInterface{
             resultSet = statement.executeQuery();
             
             if (resultSet.next()){
-                model = new Modelo_calzado(
-                   resultSet.getInt("Cod_calzado"),
-                   resultSet.getInt("Calzado_numero"));
+                model = new Modelo_reserva(
+                   resultSet.getInt("NO_reserva"),
+                   resultSet.getString("Fecha_hora"),
+                   resultSet.getBoolean("Estado"),
+                   resultSet.getInt("Valor_total"),
+                   resultSet.getInt("PISTA_NO_pista"),
+                   resultSet.getInt("CLIENTE_ID_identificacion"));
             }
             
             resultSet.close();

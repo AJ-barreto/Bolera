@@ -15,7 +15,7 @@ import Modelo.Modelo_empl;
 import Modelo.Modelo_inicio;
 import Modelo.Elementos.Modelo_pista;
 import Modelo.Elementos.Modelo_productos;
-import Modelo.Modelo_reserva;
+import Modelo.Modelo_reserv;
 import Vista.Vista_elementos;
 import Vista.Vista_empl;
 import Vista.Vista_inicio;
@@ -39,15 +39,16 @@ public class Controlador_elementos implements ActionListener{
     private PistaDAO pistaDao;
     private BolosDAO bolosDao;
     private CalzadoDAO calzadoDao;
-    private ProductosDAO productosDao;
+    private ProductosDAO productoDao;
     
     public Controlador_elementos(Vista_elementos view, Modelo_elementos model) throws SQLException{
         this.view = view;
-        this.model = model;
+        this.model = model; 
+        /*DAOS*/
         this.pistaDao = new PistaDAO();
         this.bolosDao = new BolosDAO();
         this.calzadoDao = new CalzadoDAO();
-        this.productosDao = new ProductosDAO();
+        this.productoDao = new ProductosDAO();
         mostrarDatos();
         /*BOTONES MENU*/
         this.view.jMenuItem1.addActionListener(this);
@@ -71,10 +72,16 @@ public class Controlador_elementos implements ActionListener{
         this.view.jButton15.addActionListener(this);
         this.view.jButton16.addActionListener(this);
         this.view.jButton17.addActionListener(this);
+        /*BOTONES PRODUCTOS*/
+        this.view.jButton3.addActionListener(this);
+        this.view.jButton4.addActionListener(this);
+        this.view.jButton5.addActionListener(this);
+        this.view.jButton1.addActionListener(this);
         
     }
     
     public void actionPerformed (ActionEvent e){
+        /////////////////////////////*BOTONES DEL MENU*/////////////////////////
         if(e.getSource() == this.view.jMenuItem1){
             Modelo_inicio mod = new Modelo_inicio();
             Vista_inicio view = new Vista_inicio();
@@ -85,23 +92,32 @@ public class Controlador_elementos implements ActionListener{
             view.setVisible(true);
         }
         if(e.getSource() == this.view.jMenuItem2){
-            Modelo_reserva mod = new Modelo_reserva();
-            Vista_reserva view = new Vista_reserva();
-        
-            Controlador_reserva ctrl = new Controlador_reserva(view, mod);
-            ctrl.inciar();
-            this.view.close();
-            view.setVisible(true);
+            try {
+                Modelo_reserv mod = new Modelo_reserv();
+                Vista_reserva view = new Vista_reserva();
+                
+                Controlador_reserva ctrl = new Controlador_reserva(view, mod);
+                ctrl.inciar();
+                this.view.close();
+                view.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador_elementos.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         if(e.getSource() == this.view.jMenuItem3){
-            Modelo_empl mod = new Modelo_empl();
-            Vista_empl view = new Vista_empl();
-        
-            Controlador_empl ctrl = new Controlador_empl(view, mod);
-            ctrl.inciar();
-            this.view.close();
-            view.setVisible(true);
+            try {
+                Modelo_empl mod = new Modelo_empl();
+                Vista_empl view = new Vista_empl();
+                
+                Controlador_empl ctrl = new Controlador_empl(view, mod);
+                ctrl.inciar();
+                this.view.close();
+                view.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador_elementos.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+        /////////////////////////////*BOTONES DE BOLOS*/////////////////////////
         if(e.getSource() == this.view.jButton10){
             try {
                 String dato = JOptionPane.showInputDialog(null,"Introduce el código del bolo a eliminar");
@@ -144,7 +160,7 @@ public class Controlador_elementos implements ActionListener{
             Modelo_bolos model = bolosDao.findById(codBolo);
             JOptionPane.showMessageDialog(view, "Cod_elemento: "+model.getCod_elemento()+"// Peso_bolo: "+model.getPeso_bolo());
         }
-        //---------------------------------------------------------------------------------------------------------------------------------
+        /////////////////////////////*BOTONES DE CALZADO*/////////////////////////
         if(e.getSource() == this.view.jButton9){
             try {
                 String dato = JOptionPane.showInputDialog(null,"Introduce el código del calzado a eliminar");
@@ -188,7 +204,7 @@ public class Controlador_elementos implements ActionListener{
             JOptionPane.showMessageDialog(view, "Cod_calzado: "+model.getCod_calzado()+"// Numero de calzado: "+model.getCalzado_numero());
         }
         
-        //-----------------------------------------------------------------------------------------------------------------------------------
+        /////////////////////////////*BOTONES DE PISTA*/////////////////////////
         if(e.getSource() == this.view.jButton15){
             try {
                 String dato = JOptionPane.showInputDialog(null,"Introduce el número de la pista a eliminar");
@@ -233,7 +249,61 @@ public class Controlador_elementos implements ActionListener{
             Modelo_pista model = pistaDao.findById(numPista);
             JOptionPane.showMessageDialog(view, "NO_pista: "+model.getNo_Pista()+"// Ubicacion: "+model.getUbicacion()+"// Estado: "+model.isLibre());
         }
-        
+        /////////////////////////////*BOTONES DE PRODUCTOS*/////////////////////////
+        if(e.getSource() == this.view.jButton4){
+            try {
+                String dato = JOptionPane.showInputDialog(null,"Introduce código del producto a eliminar");
+                int codProd = Integer.parseInt(dato);
+                productoDao.deleteById(codProd);
+                actualizar();
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador_elementos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if(e.getSource() == this.view.jButton3){
+            try {
+                String dato1 = JOptionPane.showInputDialog(null,"Introduce código del producto");
+                int codProd = Integer.parseInt(dato1);
+                String descripcion = JOptionPane.showInputDialog(null,"Introduzca la descripcion del producto");
+                String tipo = JOptionPane.showInputDialog(null,"Introduzca el tipo del producto");
+                String dato3 = JOptionPane.showInputDialog(null,"Introduzca el valor de compra");
+                int valor_compra = Integer.parseInt(dato3);
+                String dato4 = JOptionPane.showInputDialog(null,"Introduzca el valor de venta");
+                int valor_venta = Integer.parseInt(dato4);
+                String dato5 = JOptionPane.showInputDialog(null,"Introduzca la cantidad existente");
+                int cantidad = Integer.parseInt(dato5);
+                Modelo_productos model = new Modelo_productos(codProd, descripcion, tipo, valor_compra, valor_venta, cantidad);
+                productoDao.create(model);
+                actualizar();
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador_elementos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if(e.getSource() == this.view.jButton5){
+            try {
+                String dato1 = JOptionPane.showInputDialog(null,"Introduce el código el producto");
+                int codProd = Integer.parseInt(dato1);
+                String descripcion = JOptionPane.showInputDialog(null,"Introduzca la descripcion del producto");
+                String tipo = JOptionPane.showInputDialog(null,"Introduzca el tipo del producto");
+                String dato3 = JOptionPane.showInputDialog(null,"Introduzca el valor de compra");
+                int valor_compra = Integer.parseInt(dato3);
+                String dato4 = JOptionPane.showInputDialog(null,"Introduzca el valor de venta");
+                int valor_venta = Integer.parseInt(dato4);
+                String dato5 = JOptionPane.showInputDialog(null,"Introduzca la cantidad existente");
+                int cantidad = Integer.parseInt(dato5);
+                Modelo_productos model = new Modelo_productos(codProd, descripcion, tipo, valor_compra, valor_venta, cantidad);
+                productoDao.update(model);
+                actualizar();
+            } catch (SQLException ex) {
+                Logger.getLogger(Controlador_elementos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if(e.getSource() == this.view.jButton1){
+            String dato = JOptionPane.showInputDialog(null,"Digita el número de la pista a buscar");
+            int codProd = Integer.parseInt(dato);
+            Modelo_productos model = productoDao.findById(codProd);
+            JOptionPane.showMessageDialog(view, "Cod producto: "+model.getCod_producto()+"// Descripcion: "+model.getDescripcion()+"// Valor_compra: "+model.getValor_compra()+"// Valor venta: "+model.getValor_venta()+"// Cantidad existente: "+model.getCantidad( ));
+        }
     }
     
     public void inciar(){
@@ -254,19 +324,13 @@ public class Controlador_elementos implements ActionListener{
     void mostrarDatos() throws SQLException{
         ArrayList<Modelo_pista> models = pistaDao.findAll();
         this.view.mostrarDatosPista(models);
-   // }
-    
-    //void mostrarDatosCalzado()throws SQLException{
+        
         ArrayList<Modelo_calzado> models2 = calzadoDao.findAll();
         this.view.mostrarDatosCalzado(models2);
-    //}
-    
-    //void mostrarDatosProductos()throws SQLException{
-        ArrayList<Modelo_productos> models3 = productosDao.findAll();
+        
+        ArrayList<Modelo_productos> models3 = productoDao.findAll();
         this.view.mostrarDatosProductos(models3);
-    //}
-    
-    //void mostrarDatosBolos()throws SQLException{
+        
         ArrayList<Modelo_bolos> models4 = bolosDao.findAll();
         this.view.mostrarDatosBolos(models4);
     }

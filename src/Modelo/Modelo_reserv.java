@@ -8,10 +8,6 @@ package Modelo;
  *
  * @author Andor
  */
-public class Modelo_reserva {
-    
-    ///////////////////////////
-    
-    ////////////
+public class Modelo_reserv {
     
 }

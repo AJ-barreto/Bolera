@@ -4,7 +4,7 @@
  */
 package Controlador.DAO.Elementos;
 
-import Modelo.Elementos.Modelo_calzado;
+import Controlador.DAO.Elementos.Interface.PistaDaoInterface;
 import Modelo.Elementos.Modelo_pista;
 import database.Connector;
 import java.sql.PreparedStatement;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
  *
  * @author Andor
  */
-public class PistaDAO {
+public class PistaDAO implements PistaDaoInterface{
     Connector connector = null;
     
     public PistaDAO(){

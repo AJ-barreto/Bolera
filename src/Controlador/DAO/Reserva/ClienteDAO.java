@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controlador.DAO.Elementos;
+package Controlador.DAO.Reserva;
 
-import Controlador.DAO.Elementos.Interface.CalzadoDaoInterface;
-import Modelo.Elementos.Modelo_calzado;
+import Controlador.DAO.Reserva.Interface.ClienteDaoInterface;
+import Modelo.Reserva.Modelo_cliente;
 import database.Connector;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,16 +17,16 @@ import java.util.ArrayList;
  *
  * @author Andor
  */
-public class CalzadoDAO implements CalzadoDaoInterface{
+public class ClienteDAO implements ClienteDaoInterface{
     Connector connector = null;
     
-    public CalzadoDAO(){
+    public ClienteDAO(){
         this.connector = Connector.getInstance();
     }
     
-    public ArrayList<Modelo_calzado> findAll(){
-        String sql = "select * from ELEMENTO_BOLERA_CALZADO"; 
-        ArrayList<Modelo_calzado> lista = new ArrayList<>();
+    public ArrayList<Modelo_cliente> findAll(){
+        String sql = "select * from CLIENTE"; 
+        ArrayList<Modelo_cliente> lista = new ArrayList<>();
         
         try {
             Statement statement;
@@ -36,9 +36,12 @@ public class CalzadoDAO implements CalzadoDaoInterface{
             resultSet = statement.executeQuery(sql);
         
             while (resultSet.next()) {
-                Modelo_calzado model = new Modelo_calzado(
-                   resultSet.getInt("Cod_calzado"),
-                   resultSet.getInt("Calzado_numero")
+                Modelo_cliente model = new Modelo_cliente(
+                   resultSet.getInt("ID_identificacion"),
+                   resultSet.getString("Nombre"),
+                   resultSet.getString("Fecha_nac"),
+                   resultSet.getString("Genero"),
+                   resultSet.getInt("Inactividad")
                 );
                 lista.add(model);
             }
@@ -52,17 +55,20 @@ public class CalzadoDAO implements CalzadoDaoInterface{
         return lista;
     }
     
-    public void create(Modelo_calzado model) {
-       String sql = "insert into ELEMENTO_BOLERA_CALZADO (Cod_calzado, Calzado_numero) values (?, ?)";
+    public void create(Modelo_cliente model) {
+       String sql = "insert into CLIENTE (ID_identificacion, Nombre, Fecha_nac, Genero, Inactividad) values (?, ?, ?, ?, ?)";
        
         try{
-            Modelo_calzado modelUpdate = (Modelo_calzado) model;
+            Modelo_cliente modelUpdate = (Modelo_cliente) model;
             
             PreparedStatement statement;
             statement = connector.getConnection().prepareStatement(sql);
             
-            statement.setInt(1, modelUpdate.getCod_calzado());
-            statement.setInt(2, modelUpdate.getCalzado_numero());
+            statement.setInt(1, modelUpdate.getId());
+            statement.setString(2, modelUpdate.getNombre());
+            statement.setString(3, modelUpdate.getFecha());
+            statement.setString(4, modelUpdate.getGenero());
+            statement.setInt(5, modelUpdate.getInactividad());
                     
             statement.executeUpdate();
             
@@ -74,7 +80,7 @@ public class CalzadoDAO implements CalzadoDaoInterface{
     }
     
     public void deleteById(int id) {
-        String sql = "delete from ELEMENTO_BOLERA_CALZADO where Cod_calzado = ?";
+        String sql = "delete from CLIENTE where ID_identificacion = ?";
         
         try{            
             PreparedStatement statement;
@@ -90,17 +96,20 @@ public class CalzadoDAO implements CalzadoDaoInterface{
         }
     }
     
-    public void update(Modelo_calzado model) {
-        String sql = "update ELEMENTO_BOLERA_CALZADO set Calzado_numero = ? where Cod_calzado = ?";
+    public void update(Modelo_cliente model) {
+        String sql = "update CLIENTE set Nombre = ?, Fecha_nac = ?, Genero = ?, Inactividad = ? where ID_identificacion = ?";
        
         try{
-            Modelo_calzado modelUpdate = (Modelo_calzado) model;
+            Modelo_cliente modelUpdate = (Modelo_cliente) model;
             
             PreparedStatement statement;
             statement = connector.getConnection().prepareStatement(sql);
             
-            statement.setInt(1, modelUpdate.getCalzado_numero());
-            statement.setInt(2, modelUpdate.getCod_calzado());
+            statement.setString(1, modelUpdate.getNombre());
+            statement.setString(2, modelUpdate.getFecha());
+            statement.setString(3, modelUpdate.getGenero());
+            statement.setInt(4, modelUpdate.getInactividad());
+            statement.setInt(5, modelUpdate.getId());
                     
             statement.executeUpdate();
             
@@ -111,9 +120,9 @@ public class CalzadoDAO implements CalzadoDaoInterface{
         }
     }
     
-    public Modelo_calzado findById(int id) {
-        String sql = "select * from ELEMENTO_BOLERA_CALZADO where Cod_calzado = ?";
-        Modelo_calzado model = null;
+    public Modelo_cliente findById(int id) {
+        String sql = "select * from CLIENTE where ID_identificacion = ?";
+        Modelo_cliente model = null;
          
         try{
             PreparedStatement statement;
@@ -125,9 +134,13 @@ public class CalzadoDAO implements CalzadoDaoInterface{
             resultSet = statement.executeQuery();
             
             if (resultSet.next()){
-                model = new Modelo_calzado(
-                   resultSet.getInt("Cod_calzado"),
-                   resultSet.getInt("Calzado_numero"));
+                model = new Modelo_cliente(
+                   resultSet.getInt("ID_identificacion"),
+                   resultSet.getString("Nombre"),
+                   resultSet.getString("Fecha_nac"),
+                   resultSet.getString("Genero"),
+                   resultSet.getInt("Inactividad")
+                );
             }
             
             resultSet.close();

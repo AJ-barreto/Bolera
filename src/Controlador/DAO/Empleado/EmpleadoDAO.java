@@ -2,10 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controlador.DAO.Elementos;
+package Controlador.DAO.Empleado;
 
-import Controlador.DAO.Elementos.Interface.CalzadoDaoInterface;
-import Modelo.Elementos.Modelo_calzado;
+
+import Controlador.DAO.Empleado.Interface.EmpleadoDaoInterface;
+import Modelo.Empleado.Modelo_empleado;
 import database.Connector;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,16 +18,16 @@ import java.util.ArrayList;
  *
  * @author Andor
  */
-public class CalzadoDAO implements CalzadoDaoInterface{
+public class EmpleadoDAO implements EmpleadoDaoInterface{
     Connector connector = null;
     
-    public CalzadoDAO(){
+    public EmpleadoDAO(){
         this.connector = Connector.getInstance();
     }
     
-    public ArrayList<Modelo_calzado> findAll(){
-        String sql = "select * from ELEMENTO_BOLERA_CALZADO"; 
-        ArrayList<Modelo_calzado> lista = new ArrayList<>();
+    public ArrayList<Modelo_empleado> findAll(){
+        String sql = "select * from EMPLEADO"; 
+        ArrayList<Modelo_empleado> lista = new ArrayList<>();
         
         try {
             Statement statement;
@@ -36,9 +37,14 @@ public class CalzadoDAO implements CalzadoDaoInterface{
             resultSet = statement.executeQuery(sql);
         
             while (resultSet.next()) {
-                Modelo_calzado model = new Modelo_calzado(
-                   resultSet.getInt("Cod_calzado"),
-                   resultSet.getInt("Calzado_numero")
+                Modelo_empleado model = new Modelo_empleado(
+                   resultSet.getInt("ID_empleado"),
+                   resultSet.getInt("Cedula"),
+                   resultSet.getString("Nombre"),
+                   resultSet.getString("Fecha_nac"),
+                   resultSet.getString("Genero"),
+                   resultSet.getInt("Sueldo"),
+                   resultSet.getBoolean("Vacaciones")
                 );
                 lista.add(model);
             }
@@ -52,17 +58,21 @@ public class CalzadoDAO implements CalzadoDaoInterface{
         return lista;
     }
     
-    public void create(Modelo_calzado model) {
-       String sql = "insert into ELEMENTO_BOLERA_CALZADO (Cod_calzado, Calzado_numero) values (?, ?)";
+    public void create(Modelo_empleado model) {
+       String sql = "INSERT INTO EMPLEADO (Cedula, Nombre, Fecha_nac, Genero, Sueldo, Vacaciones) VALUES (?, ?, ?, ?, ?, ?)";
        
         try{
-            Modelo_calzado modelUpdate = (Modelo_calzado) model;
+            Modelo_empleado modelUpdate = (Modelo_empleado) model;
             
             PreparedStatement statement;
             statement = connector.getConnection().prepareStatement(sql);
             
-            statement.setInt(1, modelUpdate.getCod_calzado());
-            statement.setInt(2, modelUpdate.getCalzado_numero());
+            statement.setInt(1, modelUpdate.getCedula());
+            statement.setString(2, modelUpdate.getNombre());
+            statement.setString(3, modelUpdate.getFecha());
+            statement.setString(4, modelUpdate.getGenero());
+            statement.setInt(5, modelUpdate.getSueldo());
+            statement.setBoolean(6, modelUpdate.isVacaciones());
                     
             statement.executeUpdate();
             
@@ -74,7 +84,7 @@ public class CalzadoDAO implements CalzadoDaoInterface{
     }
     
     public void deleteById(int id) {
-        String sql = "delete from ELEMENTO_BOLERA_CALZADO where Cod_calzado = ?";
+        String sql = "delete from EMPLEADO where ID_empleado = ?";
         
         try{            
             PreparedStatement statement;
@@ -90,17 +100,23 @@ public class CalzadoDAO implements CalzadoDaoInterface{
         }
     }
     
-    public void update(Modelo_calzado model) {
-        String sql = "update ELEMENTO_BOLERA_CALZADO set Calzado_numero = ? where Cod_calzado = ?";
+    public void update(Modelo_empleado model) {
+        String sql = "update EMPLEADO set Cedula = ?, Nombre = ? , Fecha_nac = ?, Genero = ?, Sueldo = ?, Vacaciones = ? where ID_empleado = ?";
        
         try{
-            Modelo_calzado modelUpdate = (Modelo_calzado) model;
+            Modelo_empleado modelUpdate = (Modelo_empleado) model;
             
             PreparedStatement statement;
             statement = connector.getConnection().prepareStatement(sql);
             
-            statement.setInt(1, modelUpdate.getCalzado_numero());
-            statement.setInt(2, modelUpdate.getCod_calzado());
+            
+            statement.setInt(1, modelUpdate.getCedula());
+            statement.setString(2, modelUpdate.getNombre());
+            statement.setString(3, modelUpdate.getFecha());
+            statement.setString(4, modelUpdate.getGenero());
+            statement.setInt(5, modelUpdate.getSueldo());
+            statement.setBoolean(6, modelUpdate.isVacaciones());
+            statement.setInt(7, modelUpdate.getId());
                     
             statement.executeUpdate();
             
@@ -111,9 +127,9 @@ public class CalzadoDAO implements CalzadoDaoInterface{
         }
     }
     
-    public Modelo_calzado findById(int id) {
-        String sql = "select * from ELEMENTO_BOLERA_CALZADO where Cod_calzado = ?";
-        Modelo_calzado model = null;
+    public Modelo_empleado findById(int id) {
+        String sql = "select * from EMPLEADO where Cedula = ?";
+        Modelo_empleado model = null;
          
         try{
             PreparedStatement statement;
@@ -125,9 +141,14 @@ public class CalzadoDAO implements CalzadoDaoInterface{
             resultSet = statement.executeQuery();
             
             if (resultSet.next()){
-                model = new Modelo_calzado(
-                   resultSet.getInt("Cod_calzado"),
-                   resultSet.getInt("Calzado_numero"));
+                model = new Modelo_empleado(
+                   resultSet.getInt("ID_empleado"),
+                   resultSet.getInt("Cedula"),
+                   resultSet.getString("Nombre"),
+                   resultSet.getString("Fecha_nac"),
+                   resultSet.getString("Genero"),
+                   resultSet.getInt("Sueldo"),
+                   resultSet.getBoolean("Vacaciones"));
             }
             
             resultSet.close();

@@ -20,8 +20,6 @@ public class Vista_inicio extends javax.swing.JFrame {
     /**/
     public Vista_inicio() {
         initComponents();
-        
-        Reloj reloj = new Reloj();
     }
     
     public void close(){
@@ -51,6 +49,8 @@ public class Vista_inicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        lblReloj.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        lblReloj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblReloj.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         lblExpand.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 0)));

@@ -4,6 +4,7 @@
  */
 package Controlador.DAO.Elementos;
 
+import Controlador.DAO.Elementos.Interface.BolosDaoInterface;
 import Modelo.Elementos.Modelo_bolos;
 import database.Connector;
 import java.sql.PreparedStatement;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  *
  * @author Andor
  */
-public class BolosDAO {
+public class BolosDAO implements BolosDaoInterface{
     Connector connector = null;
     
     public BolosDAO(){

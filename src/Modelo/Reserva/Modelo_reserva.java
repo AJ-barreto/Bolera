@@ -11,14 +11,16 @@ package Modelo.Reserva;
 public class Modelo_reserva {
     private int no_reserva;
     private String fecha;
+    private String hora;
     private boolean estado;
     private int valor_total;
     private int no_pista;
     private int id;
 
-    public Modelo_reserva(int no_reserva, String fecha, boolean estado, int valor_total, int no_pista, int id) {
+    public Modelo_reserva(int no_reserva, String fecha, String hora, boolean estado, int valor_total, int no_pista, int id) {
         this.no_reserva = no_reserva;
         this.fecha = fecha;
+        this.hora = hora;
         this.estado = estado;
         this.valor_total = valor_total;
         this.no_pista = no_pista;
@@ -31,6 +33,10 @@ public class Modelo_reserva {
 
     public String getFecha() {
         return fecha;
+    }
+    
+    public String getHora() {
+        return hora;
     }
 
     public boolean isEstado() {

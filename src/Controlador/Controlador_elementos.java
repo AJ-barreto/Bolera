@@ -130,11 +130,12 @@ public class Controlador_elementos implements ActionListener{
         }
         if(e.getSource() == this.view.jButton6){
             try {
-                String dato1 = JOptionPane.showInputDialog(null,"Introduce el código del bolo");
-                int codBolo = Integer.parseInt(dato1);
+                /*String dato1 = JOptionPane.showInputDialog(null,"Introduce el código del bolo");
+                int codBolo = Integer.parseInt(dato1);*/
                 String dato2 = JOptionPane.showInputDialog(null,"Introduzca el Peso del Bolo");
                 int pesoBolo = Integer.parseInt(dato2);
-                Modelo_bolos model = new Modelo_bolos(codBolo, pesoBolo);
+                String color = JOptionPane.showInputDialog(null,"Introduzca el color del Bolo");
+                Modelo_bolos model = new Modelo_bolos(0, pesoBolo, color);
                 bolosDao.create(model);
                 actualizar();
             } catch (SQLException ex) {
@@ -147,7 +148,8 @@ public class Controlador_elementos implements ActionListener{
                 int codBolo = Integer.parseInt(dato1);
                 String dato2 = JOptionPane.showInputDialog(null,"Introduzca el Peso del Bolo");
                 int pesoBolo = Integer.parseInt(dato2);
-                Modelo_bolos model = new Modelo_bolos(codBolo, pesoBolo);
+                String color = JOptionPane.showInputDialog(null,"Introduzca el color del Bolo");
+                Modelo_bolos model = new Modelo_bolos(codBolo, pesoBolo, color);
                 bolosDao.update(model);
                 actualizar();
             } catch (SQLException ex) {
@@ -158,7 +160,7 @@ public class Controlador_elementos implements ActionListener{
             String dato = JOptionPane.showInputDialog(null,"Digita el cod a buscar");
             int codBolo = Integer.parseInt(dato);
             Modelo_bolos model = bolosDao.findById(codBolo);
-            JOptionPane.showMessageDialog(view, "Cod_elemento: "+model.getCod_elemento()+"// Peso_bolo: "+model.getPeso_bolo());
+            JOptionPane.showMessageDialog(view, "Cod_elemento: "+model.getCod_elemento()+"// Peso_bolo: "+model.getPeso_bolo()+"// Color del bolo: "+model.getColor());
         }
         /////////////////////////////*BOTONES DE CALZADO*/////////////////////////
         if(e.getSource() == this.view.jButton9){
@@ -173,11 +175,12 @@ public class Controlador_elementos implements ActionListener{
         }
         if(e.getSource() == this.view.jButton8){
             try {
-                String dato1 = JOptionPane.showInputDialog(null,"Introduce el código del calzado");
-                int codCalz = Integer.parseInt(dato1);
+                /*String dato1 = JOptionPane.showInputDialog(null,"Introduce el código del calzado");
+                int codCalz = Integer.parseInt(dato1);*/
                 String dato2 = JOptionPane.showInputDialog(null,"Introduzca el número de calzado");
                 int numCalz = Integer.parseInt(dato2);
-                Modelo_calzado model = new Modelo_calzado(codCalz, numCalz);
+                String color = JOptionPane.showInputDialog(null,"Introduzca el color del Calzado");
+                Modelo_calzado model = new Modelo_calzado(0, numCalz, color);
                 calzadoDao.create(model);
                 actualizar();
             } catch (SQLException ex) {
@@ -190,7 +193,8 @@ public class Controlador_elementos implements ActionListener{
                 int codCalz = Integer.parseInt(dato1);
                 String dato2 = JOptionPane.showInputDialog(null,"Introduzca el número de calzado");
                 int numCalz = Integer.parseInt(dato2);
-                Modelo_calzado model = new Modelo_calzado(codCalz, numCalz);
+                String color = JOptionPane.showInputDialog(null,"Introduzca el color del Calzado");
+                Modelo_calzado model = new Modelo_calzado(codCalz, numCalz, color);
                 calzadoDao.update(model);
                 actualizar();
             } catch (SQLException ex) {
@@ -201,7 +205,7 @@ public class Controlador_elementos implements ActionListener{
             String dato = JOptionPane.showInputDialog(null,"Digita el cod a buscar");
             int codCalz = Integer.parseInt(dato);
             Modelo_calzado model = calzadoDao.findById(codCalz);
-            JOptionPane.showMessageDialog(view, "Cod_calzado: "+model.getCod_calzado()+"// Numero de calzado: "+model.getCalzado_numero());
+            JOptionPane.showMessageDialog(view, "Cod_calzado: "+model.getCod_calzado()+"// Numero de calzado: "+model.getCalzado_numero()+"Color del Calzado: "+model.getCalzado_color());
         }
         
         /////////////////////////////*BOTONES DE PISTA*/////////////////////////
@@ -217,12 +221,14 @@ public class Controlador_elementos implements ActionListener{
         }
         if(e.getSource() == this.view.jButton14){
             try {
-                String dato1 = JOptionPane.showInputDialog(null,"Introduce el número de la pista");
-                int numPista = Integer.parseInt(dato1);
+                /*String dato1 = JOptionPane.showInputDialog(null,"Introduce el número de la pista");
+                int numPista = Integer.parseInt(dato1);*/
                 String ubicacion = JOptionPane.showInputDialog(null,"Introduzca la ubicacion de la pista");
                 String dato3 = JOptionPane.showInputDialog(null,"Introduzca si la pista está libre actualmente");
                 boolean libre = Boolean.parseBoolean(dato3);
-                Modelo_pista model = new Modelo_pista(numPista,ubicacion,libre);
+                String color = JOptionPane.showInputDialog(null,"Introduzca si la pista está activa");
+                boolean activo = Boolean.parseBoolean(color);
+                Modelo_pista model = new Modelo_pista(0,ubicacion,libre,activo);
                 pistaDao.create(model);
                 actualizar();
             } catch (SQLException ex) {
@@ -236,7 +242,9 @@ public class Controlador_elementos implements ActionListener{
                 String ubicacion = JOptionPane.showInputDialog(null,"Introduzca la ubicacion de la pista");
                 String dato3 = JOptionPane.showInputDialog(null,"Introduzca si está libre actualmente");
                 boolean libre = Boolean.parseBoolean(dato3);
-                Modelo_pista model = new Modelo_pista(numPista, ubicacion,libre);
+                String color = JOptionPane.showInputDialog(null,"Introduzca si la pista está activa");
+                boolean activo = Boolean.parseBoolean(color);
+                Modelo_pista model = new Modelo_pista(numPista, ubicacion,libre,activo);
                 pistaDao.update(model);
                 actualizar();
             } catch (SQLException ex) {
@@ -247,7 +255,7 @@ public class Controlador_elementos implements ActionListener{
             String dato = JOptionPane.showInputDialog(null,"Digita el número de la pista a buscar");
             int numPista = Integer.parseInt(dato);
             Modelo_pista model = pistaDao.findById(numPista);
-            JOptionPane.showMessageDialog(view, "NO_pista: "+model.getNo_Pista()+"// Ubicacion: "+model.getUbicacion()+"// Estado: "+model.isLibre());
+            JOptionPane.showMessageDialog(view, "NO_pista: "+model.getNo_Pista()+"// Ubicacion: "+model.getUbicacion()+"// Estado: "+model.isLibre()+"// Activo: "+model.isLibre());
         }
         /////////////////////////////*BOTONES DE PRODUCTOS*/////////////////////////
         if(e.getSource() == this.view.jButton4){
@@ -262,8 +270,8 @@ public class Controlador_elementos implements ActionListener{
         }
         if(e.getSource() == this.view.jButton3){
             try {
-                String dato1 = JOptionPane.showInputDialog(null,"Introduce código del producto");
-                int codProd = Integer.parseInt(dato1);
+                /*String dato1 = JOptionPane.showInputDialog(null,"Introduce código del producto");
+                int codProd = Integer.parseInt(dato1);*/
                 String descripcion = JOptionPane.showInputDialog(null,"Introduzca la descripcion del producto");
                 String tipo = JOptionPane.showInputDialog(null,"Introduzca el tipo del producto");
                 String dato3 = JOptionPane.showInputDialog(null,"Introduzca el valor de compra");
@@ -272,7 +280,7 @@ public class Controlador_elementos implements ActionListener{
                 int valor_venta = Integer.parseInt(dato4);
                 String dato5 = JOptionPane.showInputDialog(null,"Introduzca la cantidad existente");
                 int cantidad = Integer.parseInt(dato5);
-                Modelo_productos model = new Modelo_productos(codProd, descripcion, tipo, valor_compra, valor_venta, cantidad);
+                Modelo_productos model = new Modelo_productos(0, descripcion, tipo, valor_compra, valor_venta, cantidad);
                 productoDao.create(model);
                 actualizar();
             } catch (SQLException ex) {

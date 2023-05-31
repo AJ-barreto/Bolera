@@ -36,7 +36,6 @@ public class Reloj extends Thread implements Runnable{
                 int segundos=c.get(Calendar.SECOND);
                 Calendar calendario = new GregorianCalendar();
                 ampm = calendario.get(Calendar.AM_PM) == Calendar.AM?"AM":"PM";
-                
                 String tiempo = hora+":"+minutos+":"+segundos+ " "+ampm;
                 this.view.lblReloj.setText("Hora: "+tiempo);
                 Thread.sleep(1000);

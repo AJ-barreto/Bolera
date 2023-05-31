@@ -10,13 +10,15 @@ package Modelo.Reserva;
  */
 public class Modelo_cliente {
     private int id;
+    private int cedula;
     private String nombre;
     private String fecha;
     private String genero;
     private int inactividad;
 
-    public Modelo_cliente(int id, String nombre, String fecha, String genero, int inactividad) {
+    public Modelo_cliente(int id, int cedula, String nombre, String fecha, String genero, int inactividad) {
         this.id = id;
+        this.cedula = cedula;
         this.nombre = nombre;
         this.fecha = fecha;
         this.genero = genero;
@@ -25,6 +27,10 @@ public class Modelo_cliente {
 
     public int getId() {
         return id;
+    }
+    
+    public int getCedula() {
+        return cedula;
     }
 
     public String getNombre() {

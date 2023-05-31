@@ -34,6 +34,7 @@ public class Vista_elementos extends javax.swing.JFrame {
         modelTablePista.addColumn("NO_pista");
         modelTablePista.addColumn("Ubicacion");
         modelTablePista.addColumn("Libre");
+        modelTablePista.addColumn("Activo");
         
         this.jTable2.setModel(modelTableProductos);
         
@@ -48,11 +49,13 @@ public class Vista_elementos extends javax.swing.JFrame {
         
         modelTableCalzado.addColumn("Cod_calzado");
         modelTableCalzado.addColumn("Calzado_numero");
+        modelTableCalzado.addColumn("Calzado_color");
         
         this.jTable5.setModel(modelTableBolos);
         
         modelTableBolos.addColumn("Cod_bolo");
         modelTableBolos.addColumn("Peso_bolo");
+        modelTableBolos.addColumn("Color");
     }
     
     public void close(){
@@ -63,7 +66,7 @@ public class Vista_elementos extends javax.swing.JFrame {
     public void mostrarDatosPista(ArrayList<Modelo_pista> models){
         
         for (Modelo_pista model:models) {
-            String[] data = {model.getNo_Pista()+"",model.getUbicacion(),model.isLibre()+""};
+            String[] data = {model.getNo_Pista()+"",model.getUbicacion(),model.isLibre()+"",model.isActivo()+""};
             modelTablePista.addRow(data);
         }
     }
@@ -71,7 +74,7 @@ public class Vista_elementos extends javax.swing.JFrame {
     public void mostrarDatosCalzado(ArrayList<Modelo_calzado> models){
         
         for (Modelo_calzado model:models) {
-            String[] data = {model.getCod_calzado()+"",model.getCalzado_numero()+""};
+            String[] data = {model.getCod_calzado()+"",model.getCalzado_numero()+"",model.getCalzado_color()};
             modelTableCalzado.addRow(data);
         }
     }
@@ -87,7 +90,7 @@ public class Vista_elementos extends javax.swing.JFrame {
     public void mostrarDatosBolos(ArrayList<Modelo_bolos> models){
         
         for (Modelo_bolos model:models) {
-            String[] data = {model.getCod_elemento()+"",model.getPeso_bolo()+""};
+            String[] data = {model.getCod_elemento()+"",model.getPeso_bolo()+"",model.getColor()};
             modelTableBolos.addRow(data);
         }
     }
@@ -137,6 +140,11 @@ public class Vista_elementos extends javax.swing.JFrame {
         jButton16 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jPanel1 = new javax.swing.JPanel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator1 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuInicio = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -157,12 +165,16 @@ public class Vista_elementos extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Comentarios"));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 14, 170, 159));
 
         jLabel4.setText("Pistas de bolos");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 6, -1, -1));
 
         jLabel5.setText("Productos");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(727, 228, -1, -1));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -177,6 +189,8 @@ public class Vista_elementos extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 256, 432, 117));
+
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -190,11 +204,17 @@ public class Vista_elementos extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable3);
 
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 28, 432, 133));
+        getContentPane().add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 18, 258, 155));
+
         jButton3.setText("Añadir");
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 391, 90, -1));
 
         jButton4.setText("Eliminar");
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 391, 90, -1));
 
         jButton5.setText("Modificar");
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(769, 391, 90, -1));
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -209,6 +229,8 @@ public class Vista_elementos extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(jTable4);
 
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 227, 211, 158));
+
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -222,21 +244,31 @@ public class Vista_elementos extends javax.swing.JFrame {
         ));
         jScrollPane5.setViewportView(jTable5);
 
+        getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 227, 204, 158));
+
         jLabel2.setText("Bolos");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 198, -1, -1));
 
         jLabel6.setText("Calzado");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(343, 198, -1, -1));
 
         jButton6.setText("Añadir");
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 391, 90, -1));
 
         jButton8.setText("Añadir");
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 396, 90, -1));
 
         jButton9.setText("Eliminar");
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 396, 86, -1));
 
         jButton10.setText("Eliminar");
+        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 391, 82, -1));
 
         jButton7.setText("Modificar");
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 431, 90, -1));
 
         jButton11.setText("Buscar");
+        getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 431, 82, -1));
 
         jButton12.setText("Modificar");
         jButton12.addActionListener(new java.awt.event.ActionListener() {
@@ -244,18 +276,54 @@ public class Vista_elementos extends javax.swing.JFrame {
                 jButton12ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 431, 90, -1));
 
         jButton13.setText("Buscar");
+        getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 431, 86, -1));
 
         jButton14.setText("Añadir");
+        getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 173, 90, -1));
 
         jButton15.setText("Eliminar");
+        getContentPane().add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 173, 90, -1));
 
         jButton16.setText("Modificar");
+        getContentPane().add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 173, 90, -1));
 
         jButton17.setText("Buscar");
+        getContentPane().add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(877, 173, 90, -1));
 
         jButton1.setText("Buscar");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(877, 391, 90, -1));
+
+        jSeparator4.setBackground(new java.awt.Color(102, 102, 255));
+        jSeparator4.setForeground(new java.awt.Color(102, 102, 255));
+        jSeparator4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
+        jSeparator4.setOpaque(true);
+        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 510, 10));
+
+        jSeparator3.setBackground(new java.awt.Color(102, 102, 255));
+        jSeparator3.setForeground(new java.awt.Color(102, 102, 255));
+        jSeparator3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
+        jSeparator3.setOpaque(true);
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 10, 280));
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jSeparator2.setBackground(new java.awt.Color(102, 102, 255));
+        jSeparator2.setForeground(new java.awt.Color(102, 102, 255));
+        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
+        jSeparator2.setOpaque(true);
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 10, 460));
+
+        jSeparator1.setBackground(new java.awt.Color(102, 102, 255));
+        jSeparator1.setForeground(new java.awt.Color(102, 102, 255));
+        jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
+        jSeparator1.setOpaque(true);
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, 500, 10));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 460));
 
         MenuInicio.setText("Elementos");
 
@@ -276,138 +344,6 @@ public class Vista_elementos extends javax.swing.JFrame {
         jMenuBar1.add(MenuInicio);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(29, 29, 29)
-                                .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
-                                        .addGap(32, 32, 32)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                                .addGap(36, 36, 36)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton12, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                                            .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jLabel2)
-                        .addGap(226, 226, 226)
-                        .addComponent(jLabel6)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(208, 208, 208))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(221, 221, 221))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(35, 35, 35))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCalendar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton14)
-                            .addComponent(jButton15)
-                            .addComponent(jButton16)
-                            .addComponent(jButton17))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6))
-                        .addGap(13, 13, 13)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton6)
-                                    .addComponent(jButton10)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(11, 11, 11)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton8)
-                                    .addComponent(jButton9)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4)
-                            .addComponent(jButton5)
-                            .addComponent(jButton1))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton7)
-                        .addComponent(jButton11)
-                        .addComponent(jButton12))
-                    .addComponent(jButton13))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -490,11 +426,16 @@ public class Vista_elementos extends javax.swing.JFrame {
     public javax.swing.JMenuItem jMenuItem1;
     public javax.swing.JMenuItem jMenuItem2;
     public javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTable jTable1;
     public javax.swing.JTable jTable2;
     public javax.swing.JTable jTable3;

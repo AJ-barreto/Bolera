@@ -12,11 +12,13 @@ public class Modelo_pista {
     private int no_Pista;
     private String ubicacion;
     private boolean libre;
+    private boolean activo;
 
-    public Modelo_pista(int no_Pista, String ubicacion, boolean libre) {
+    public Modelo_pista(int no_Pista, String ubicacion, boolean libre, boolean activo) {
         this.no_Pista = no_Pista;
         this.ubicacion = ubicacion;
         this.libre = libre;
+        this.activo = activo;
     }
 
     public int getNo_Pista() {
@@ -31,5 +33,7 @@ public class Modelo_pista {
         return libre;
     }
     
-    
+    public boolean isActivo() {
+        return activo;
+    }
 }

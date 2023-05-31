@@ -40,27 +40,19 @@ public class Vista_ingresar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonInicio = new javax.swing.JButton();
+        lblContra = new javax.swing.JLabel();
+        lblUsuario = new javax.swing.JLabel();
+        TextContra = new javax.swing.JTextField();
+        TextUsuario = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        TextUsuario = new javax.swing.JTextField();
-        lblUsuario = new javax.swing.JLabel();
-        lblContra = new javax.swing.JLabel();
-        TextContra = new javax.swing.JTextField();
-        buttonInicio = new javax.swing.JButton();
-        ButtonCancelar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        ButtonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        TextUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextUsuarioActionPerformed(evt);
-            }
-        });
-
-        lblUsuario.setText("Nombre de usuario");
-
-        lblContra.setText("Contraseña");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         buttonInicio.setText("Iniciar Sesion");
         buttonInicio.addActionListener(new java.awt.event.ActionListener() {
@@ -68,6 +60,33 @@ public class Vista_ingresar extends javax.swing.JFrame {
                 buttonInicioActionPerformed(evt);
             }
         });
+        getContentPane().add(buttonInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 130, -1));
+
+        lblContra.setForeground(new java.awt.Color(255, 255, 255));
+        lblContra.setText("Contraseña");
+        getContentPane().add(lblContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, -1, 20));
+
+        lblUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsuario.setText("Nombre de usuario");
+        getContentPane().add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+        getContentPane().add(TextContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 109, -1));
+
+        TextUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextUsuarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TextUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 109, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Andor\\Documents\\NetBeansProjects\\Bolera_Final\\Imagenes\\Logo.jpg")); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 102));
+        jPanel1.setForeground(new java.awt.Color(0, 0, 204));
+        jPanel1.setToolTipText("");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(265, 26, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 16, -1, -1));
 
         ButtonCancelar.setText("Cancelar");
         ButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -75,78 +94,9 @@ public class Vista_ingresar extends javax.swing.JFrame {
                 ButtonCancelarActionPerformed(evt);
             }
         });
+        jPanel1.add(ButtonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 90, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(53, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(46, 46, 46)
-                        .addComponent(jLabel1)
-                        .addGap(23, 23, 23))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblContra)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(TextContra, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblUsuario)
-                                .addGap(18, 18, 18)
-                                .addComponent(TextUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(ButtonCancelar)
-                        .addGap(11, 11, 11)))
-                .addContainerGap(77, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel2)))
-                .addGap(38, 38, 38)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(TextUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblUsuario))
-                        .addGap(62, 62, 62))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(TextContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblContra)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(buttonInicio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ButtonCancelar)
-                .addGap(49, 49, 49))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -206,6 +156,7 @@ public class Vista_ingresar extends javax.swing.JFrame {
     public javax.swing.JButton buttonInicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JLabel lblContra;
     public javax.swing.JLabel lblUsuario;

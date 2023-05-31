@@ -11,10 +11,12 @@ package Modelo.Elementos;
 public class Modelo_calzado {
     private int cod_calzado;
     private int calzado_numero;
+    private String calzado_color;
 
-    public Modelo_calzado(int cod_calzado, int calzado_numero) {
+    public Modelo_calzado(int cod_calzado, int calzado_numero, String color) {
         this.cod_calzado = cod_calzado;
         this.calzado_numero = calzado_numero;
+        this.calzado_color = color;
     }
 
     public int getCod_calzado() {
@@ -25,5 +27,8 @@ public class Modelo_calzado {
         return calzado_numero;
     }
     
+    public String getCalzado_color() {
+        return calzado_color;
+    }
     
 }

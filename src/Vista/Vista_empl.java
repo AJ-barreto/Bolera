@@ -65,6 +65,8 @@ public class Vista_empl extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jPanel1 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuInicio = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -85,8 +87,10 @@ public class Vista_empl extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setText("Empleados");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(594, 6, -1, -1));
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -101,15 +105,32 @@ public class Vista_empl extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable3);
 
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 28, -1, 254));
+
         jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Observaciones"));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 15, 345, 267));
 
         jButton1.setText("Añadir");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 294, -1, -1));
 
         jButton2.setText("Eliminar");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(537, 294, -1, -1));
 
         jButton3.setText("Modificar");
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 294, -1, -1));
 
         jButton4.setText("Buscar");
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(787, 294, -1, -1));
+
+        jSeparator1.setBackground(new java.awt.Color(102, 102, 255));
+        jSeparator1.setForeground(new java.awt.Color(102, 102, 255));
+        jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
+        jSeparator1.setOpaque(true);
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 3, 10, 320));
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 330));
 
         MenuInicio.setText("Empleados");
 
@@ -135,52 +156,6 @@ public class Vista_empl extends javax.swing.JFrame {
         jMenuBar1.add(MenuInicio);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(226, 226, 226))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(58, 58, 58)
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3)
-                                .addGap(36, 36, 36)
-                                .addComponent(jButton4))
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap(9, Short.MAX_VALUE))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -243,8 +218,10 @@ public class Vista_empl extends javax.swing.JFrame {
     public javax.swing.JMenuItem jMenuItem1;
     public javax.swing.JMenuItem jMenuItem2;
     public javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     public javax.swing.JTable jTable3;
     // End of variables declaration//GEN-END:variables

@@ -11,10 +11,12 @@ package Modelo.Elementos;
 public class Modelo_bolos {
     private int cod_elemento;
     private int peso_bolo;
+    private String color;
 
-    public Modelo_bolos(int cod_elemento, int peso_bolo) {
+    public Modelo_bolos(int cod_elemento, int peso_bolo, String color) {
         this.cod_elemento = cod_elemento;
         this.peso_bolo = peso_bolo;
+        this.color = color;
     }
 
     public int getCod_elemento() {
@@ -23,6 +25,10 @@ public class Modelo_bolos {
 
     public int getPeso_bolo() {
         return peso_bolo;
+    }
+    
+    public String getColor() {
+        return color;
     }
     
     

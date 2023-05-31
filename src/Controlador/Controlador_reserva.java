@@ -115,14 +115,14 @@ public class Controlador_reserva implements ActionListener{
         }
         if(e.getSource() == this.view.jButton1){
             try {
-                String dato1 = JOptionPane.showInputDialog(null,"Introduce el id del cliente");
+                String dato1 = JOptionPane.showInputDialog(null,"Introduce la cedula del cliente");
                 int id = Integer.parseInt(dato1);
                 String nombre = JOptionPane.showInputDialog(null,"Introduzca el nombre del cliente");
                 String fecha = JOptionPane.showInputDialog(null,"Introduzca la fecha de nacimiento del cliente");
                 String genero = JOptionPane.showInputDialog(null,"Introduzca el genero del cliente");
                 String dato2 = JOptionPane.showInputDialog(null,"Introduzca la última vez que el cliente reservó una pista");
                 int inactividad = Integer.parseInt(dato2);
-                Modelo_cliente model = new Modelo_cliente(id, nombre, fecha, genero, inactividad);
+                Modelo_cliente model = new Modelo_cliente(0,id, nombre, fecha, genero, inactividad);
                 clienteDao.create(model);
                 actualizar();
             } catch (SQLException ex) {
@@ -131,14 +131,16 @@ public class Controlador_reserva implements ActionListener{
         }
         if(e.getSource() == this.view.jButton3){
             try {
-                String dato1 = JOptionPane.showInputDialog(null,"Introduce el id del cliente");
-                int id = Integer.parseInt(dato1);
+                String dato = JOptionPane.showInputDialog(null,"Introduce el id del cliente");
+                int id = Integer.parseInt(dato);
+                String dato1 = JOptionPane.showInputDialog(null,"Introduce la cedula del cliente");
+                int ced = Integer.parseInt(dato1);
                 String nombre = JOptionPane.showInputDialog(null,"Introduzca el nombre del cliente");
                 String fecha = JOptionPane.showInputDialog(null,"Introduzca la fecha de nacimiento del cliente");
                 String genero = JOptionPane.showInputDialog(null,"Introduzca el genero del cliente");
                 String dato2 = JOptionPane.showInputDialog(null,"Introduzca la última vez que el cliente reservó una pista");
                 int inactividad = Integer.parseInt(dato2);
-                Modelo_cliente model = new Modelo_cliente(id, nombre, fecha, genero, inactividad);
+                Modelo_cliente model = new Modelo_cliente(id, ced, nombre, fecha, genero, inactividad);
                 clienteDao.update(model);
                 actualizar();
             } catch (SQLException ex) {
@@ -164,9 +166,10 @@ public class Controlador_reserva implements ActionListener{
         }
         if(e.getSource() == this.view.jButton5){
             try {
-                String dato1 = JOptionPane.showInputDialog(null,"Introduce el número de reserva");
-                int codReserva = Integer.parseInt(dato1);
+                /*String dato1 = JOptionPane.showInputDialog(null,"Introduce el número de reserva");
+                int codReserva = Integer.parseInt(dato1);*/
                 String fecha = JOptionPane.showInputDialog(null,"Introduzca la fecha de la reserva");
+                String hora = JOptionPane.showInputDialog(null,"Introduzca la hora de la reserva");
                 String dato5 = JOptionPane.showInputDialog(null,"Introduzca si ya ha pagado la reserva");
                 boolean estado = Boolean.parseBoolean(dato5);
                 String dato3 = JOptionPane.showInputDialog(null,"Introduzca el valor total de la reserva");
@@ -175,7 +178,7 @@ public class Controlador_reserva implements ActionListener{
                 int pista = Integer.parseInt(dato2);
                 String dato4 = JOptionPane.showInputDialog(null,"Introduzca el id del cliente que ha reservado");
                 int id = Integer.parseInt(dato4);
-                Modelo_reserva model = new Modelo_reserva(codReserva, fecha,estado,valor_total,pista,id);
+                Modelo_reserva model = new Modelo_reserva(0, fecha, hora, estado,valor_total,pista,id);
                 reservaDao.create(model);
                 actualizar();
             } catch (SQLException ex) {
@@ -187,6 +190,7 @@ public class Controlador_reserva implements ActionListener{
                 String dato1 = JOptionPane.showInputDialog(null,"Introduce el número de reserva");
                 int codReserva = Integer.parseInt(dato1);
                 String fecha = JOptionPane.showInputDialog(null,"Introduzca la fecha de la reserva");
+                String hora = JOptionPane.showInputDialog(null,"Introduzca la hora de la reserva");
                 String dato5 = JOptionPane.showInputDialog(null,"Introduzca si ya ha pagado la reserva");
                 boolean estado = Boolean.parseBoolean(dato5);
                 String dato3 = JOptionPane.showInputDialog(null,"Introduzca el valor total de la reserva");
@@ -195,7 +199,7 @@ public class Controlador_reserva implements ActionListener{
                 int pista = Integer.parseInt(dato2);
                 String dato4 = JOptionPane.showInputDialog(null,"Introduzca el id del cliente que ha reservado");
                 int id = Integer.parseInt(dato4);
-                Modelo_reserva model = new Modelo_reserva(codReserva, fecha,estado,valor_total,pista,id);
+                Modelo_reserva model = new Modelo_reserva(codReserva, fecha,hora, estado,valor_total,pista,id);
                 reservaDao.update(model);
                 actualizar();
             } catch (SQLException ex) {

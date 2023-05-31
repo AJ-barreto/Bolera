@@ -38,9 +38,24 @@ public class Vista_inicio extends javax.swing.JFrame {
 
         jCalendar1 = new com.toedter.calendar.JCalendar();
         jSpinner1 = new javax.swing.JSpinner();
-        lblReloj = new javax.swing.JLabel();
-        lblExpand = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jCalendar3 = new com.toedter.calendar.JCalendar();
+        lblReloj = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuInicio = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -48,12 +63,70 @@ public class Vista_inicio extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setText("Generar");
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 157, 80, -1));
+
+        jLabel2.setText("Reporte de Reservaciones");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
+
+        jLabel3.setText("Informe de Empleados");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+
+        jLabel4.setText("Informe de Pistas");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, 30));
+
+        jLabel5.setText("Informe de Bolos");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
+
+        jButton2.setText("Generar");
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 208, 80, -1));
+
+        jButton3.setText("Generar");
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 251, 80, -1));
+
+        jButton4.setText("Generar");
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 294, 80, -1));
+
+        jLabel7.setText("Informe de Calzados");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
+
+        jSeparator1.setBackground(new java.awt.Color(102, 102, 255));
+        jSeparator1.setForeground(new java.awt.Color(102, 102, 255));
+        jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
+        jSeparator1.setOpaque(true);
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 113, 290, 10));
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setText("Reporte de productos");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 130, -1));
+
+        jButton6.setText("Generar");
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, 80, -1));
+
+        jButton5.setText("Generar");
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, 80, -1));
+
+        jLabel1.setText("Reportes");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
+        jPanel1.add(jCalendar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 375, 380));
 
         lblReloj.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         lblReloj.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblReloj.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(lblReloj, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 226, 79));
+        lblReloj.getAccessibleContext().setAccessibleName("lblReloj");
 
-        lblExpand.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 51, 0)));
+        jSeparator2.setBackground(new java.awt.Color(102, 102, 255));
+        jSeparator2.setForeground(new java.awt.Color(102, 102, 255));
+        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
+        jSeparator2.setOpaque(true);
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 10, 450));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 450));
 
         MenuInicio.setText("Inicio");
 
@@ -74,34 +147,6 @@ public class Vista_inicio extends javax.swing.JFrame {
         jMenuBar1.add(MenuInicio);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblExpand, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblReloj, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jCalendar3, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCalendar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblReloj, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblExpand, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-
-        lblReloj.getAccessibleContext().setAccessibleName("lblReloj");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -148,14 +193,29 @@ public class Vista_inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JMenu MenuInicio;
+    public javax.swing.JButton jButton1;
+    public javax.swing.JButton jButton2;
+    public javax.swing.JButton jButton3;
+    public javax.swing.JButton jButton4;
+    public javax.swing.JButton jButton5;
+    public javax.swing.JButton jButton6;
     private com.toedter.calendar.JCalendar jCalendar1;
     private com.toedter.calendar.JCalendar jCalendar3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenuBar jMenuBar1;
     public javax.swing.JMenuItem jMenuItem1;
     public javax.swing.JMenuItem jMenuItem2;
     public javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSpinner jSpinner1;
-    public javax.swing.JLabel lblExpand;
     public javax.swing.JLabel lblReloj;
     // End of variables declaration//GEN-END:variables
 }

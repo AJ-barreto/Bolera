@@ -39,7 +39,8 @@ public class PistaDAO implements PistaDaoInterface{
                 Modelo_pista model = new Modelo_pista(
                    resultSet.getInt("NO_pista"),
                    resultSet.getString("Ubicacion"),
-                   resultSet.getBoolean("Libre")
+                   resultSet.getBoolean("Libre"),
+                   resultSet.getBoolean("Activa")
                 );
                 lista.add(model);
             }
@@ -54,7 +55,7 @@ public class PistaDAO implements PistaDaoInterface{
     }
     
     public void create(Modelo_pista model) {
-       String sql = "insert into PISTA (NO_pista, Ubicacion, Libre) values (?, ?, ?)";
+       String sql = "insert into PISTA (Ubicacion, Libre, Activa) values (?, ?, ?)";
        
         try{
             Modelo_pista modelUpdate = (Modelo_pista) model;
@@ -62,9 +63,10 @@ public class PistaDAO implements PistaDaoInterface{
             PreparedStatement statement;
             statement = connector.getConnection().prepareStatement(sql);
             
-            statement.setInt(1, modelUpdate.getNo_Pista());
-            statement.setString(2, modelUpdate.getUbicacion());
-            statement.setBoolean(3, modelUpdate.isLibre());
+            //statement.setInt(1, modelUpdate.getNo_Pista());
+            statement.setString(1, modelUpdate.getUbicacion());
+            statement.setBoolean(2, modelUpdate.isLibre());
+            statement.setBoolean(3, modelUpdate.isActivo());
                     
             statement.executeUpdate();
             
@@ -93,7 +95,7 @@ public class PistaDAO implements PistaDaoInterface{
     }
     
     public void update(Modelo_pista model) {
-        String sql = "update PISTA set Ubicacion = ?, Libre = ?  where NO_pista = ?";
+        String sql = "update PISTA set Ubicacion = ?, Libre = ?, Activa = ?  where NO_pista = ?";
        
         try{
             Modelo_pista modelUpdate = (Modelo_pista) model;
@@ -103,7 +105,8 @@ public class PistaDAO implements PistaDaoInterface{
             
             statement.setString(1, modelUpdate.getUbicacion());
             statement.setBoolean(2, modelUpdate.isLibre());
-            statement.setInt(3, modelUpdate.getNo_Pista());
+            statement.setBoolean(3, modelUpdate.isActivo());
+            statement.setInt(4, modelUpdate.getNo_Pista());
                     
             statement.executeUpdate();
             
@@ -131,7 +134,8 @@ public class PistaDAO implements PistaDaoInterface{
                 model = new Modelo_pista(
                    resultSet.getInt("NO_pista"),
                    resultSet.getString("Ubicacion"),
-                   resultSet.getBoolean("Libre"));
+                   resultSet.getBoolean("Libre"),
+                   resultSet.getBoolean("Activa"));
             }
             
             resultSet.close();

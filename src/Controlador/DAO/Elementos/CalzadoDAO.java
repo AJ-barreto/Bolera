@@ -38,7 +38,8 @@ public class CalzadoDAO implements CalzadoDaoInterface{
             while (resultSet.next()) {
                 Modelo_calzado model = new Modelo_calzado(
                    resultSet.getInt("Cod_calzado"),
-                   resultSet.getInt("Calzado_numero")
+                   resultSet.getInt("Calzado_numero"),
+                   resultSet.getString("Calzado_color")
                 );
                 lista.add(model);
             }
@@ -53,7 +54,7 @@ public class CalzadoDAO implements CalzadoDaoInterface{
     }
     
     public void create(Modelo_calzado model) {
-       String sql = "insert into ELEMENTO_BOLERA_CALZADO (Cod_calzado, Calzado_numero) values (?, ?)";
+       String sql = "insert into ELEMENTO_BOLERA_CALZADO (Calzado_numero, Calzado_color) values (?, ?)";
        
         try{
             Modelo_calzado modelUpdate = (Modelo_calzado) model;
@@ -61,8 +62,8 @@ public class CalzadoDAO implements CalzadoDaoInterface{
             PreparedStatement statement;
             statement = connector.getConnection().prepareStatement(sql);
             
-            statement.setInt(1, modelUpdate.getCod_calzado());
-            statement.setInt(2, modelUpdate.getCalzado_numero());
+            statement.setInt(1, modelUpdate.getCalzado_numero());
+            statement.setString(2, modelUpdate.getCalzado_color());
                     
             statement.executeUpdate();
             
@@ -91,7 +92,7 @@ public class CalzadoDAO implements CalzadoDaoInterface{
     }
     
     public void update(Modelo_calzado model) {
-        String sql = "update ELEMENTO_BOLERA_CALZADO set Calzado_numero = ? where Cod_calzado = ?";
+        String sql = "update ELEMENTO_BOLERA_CALZADO set Calzado_numero = ?, Calzado_color = ? where Cod_calzado = ?";
        
         try{
             Modelo_calzado modelUpdate = (Modelo_calzado) model;
@@ -100,7 +101,8 @@ public class CalzadoDAO implements CalzadoDaoInterface{
             statement = connector.getConnection().prepareStatement(sql);
             
             statement.setInt(1, modelUpdate.getCalzado_numero());
-            statement.setInt(2, modelUpdate.getCod_calzado());
+            statement.setString(2, modelUpdate.getCalzado_color());
+            statement.setInt(3, modelUpdate.getCod_calzado());
                     
             statement.executeUpdate();
             
@@ -127,7 +129,8 @@ public class CalzadoDAO implements CalzadoDaoInterface{
             if (resultSet.next()){
                 model = new Modelo_calzado(
                    resultSet.getInt("Cod_calzado"),
-                   resultSet.getInt("Calzado_numero"));
+                   resultSet.getInt("Calzado_numero"),
+                   resultSet.getString("Calzado_color"));
             }
             
             resultSet.close();

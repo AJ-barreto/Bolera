@@ -27,6 +27,7 @@ public class Vista_reserva extends javax.swing.JFrame {
         this.jTable3.setModel(modelTableCliente);
         
         modelTableCliente.addColumn("ID");
+        modelTableCliente.addColumn("Cedula");
         modelTableCliente.addColumn("Nombre");
         modelTableCliente.addColumn("Fecha nacimiento");
         modelTableCliente.addColumn("Genero");
@@ -36,6 +37,7 @@ public class Vista_reserva extends javax.swing.JFrame {
         
         modelTableReserva.addColumn("NO reserva");
         modelTableReserva.addColumn("Fecha");
+        modelTableReserva.addColumn("Hora");
         modelTableReserva.addColumn("Estado");
         modelTableReserva.addColumn("Valor total");
         modelTableReserva.addColumn("Pista");
@@ -50,7 +52,7 @@ public class Vista_reserva extends javax.swing.JFrame {
     public void mostrarDatosCliente(ArrayList<Modelo_cliente> models){
         
         for (Modelo_cliente model:models) {
-            String[] data = {model.getId()+"",model.getNombre(),model.getFecha(),model.getGenero(),model.getInactividad()+""};
+            String[] data = {model.getId()+"",model.getCedula()+"",model.getNombre(),model.getFecha(),model.getGenero(),model.getInactividad()+""};
             modelTableCliente.addRow(data);
         }
     }
@@ -59,7 +61,7 @@ public class Vista_reserva extends javax.swing.JFrame {
     public void mostrarDatosReserva(ArrayList<Modelo_reserva> models){
         
         for (Modelo_reserva model:models) {
-            String[] data = {model.getNo_reserva()+"",model.getFecha(),model.isEstado()+"",model.getValor_total()+"",model.getNo_pista()+"",model.getId()+""};
+            String[] data = {model.getNo_reserva()+"",model.getFecha(),model.getHora(),model.isEstado()+"",model.getValor_total()+"",model.getNo_pista()+"",model.getId()+""};
             modelTableReserva.addRow(data);
         }
     }
@@ -73,23 +75,26 @@ public class Vista_reserva extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jButton9 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
-        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuInicio = new javax.swing.JMenu();
@@ -98,6 +103,26 @@ public class Vista_reserva extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 208, 400, 234));
+
+        jButton9.setText("Llamada Rapida");
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 45, 120, -1));
+
+        jSeparator1.setBackground(new java.awt.Color(102, 102, 255));
+        jSeparator1.setForeground(new java.awt.Color(102, 102, 255));
+        jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
+        jSeparator1.setOpaque(true);
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 3, 10, 440));
+
+        jSeparator2.setBackground(new java.awt.Color(102, 102, 255));
+        jSeparator2.setForeground(new java.awt.Color(102, 102, 255));
+        jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
+        jSeparator2.setOpaque(true);
+        getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 213, 500, 10));
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -112,9 +137,25 @@ public class Vista_reserva extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable3);
 
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, -1, 133));
+
+        jButton1.setText("Añadir");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 83, -1));
+
+        jButton2.setText("Eliminar");
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, 93, -1));
+
+        jButton3.setText("Modificar");
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, 93, -1));
+
+        jButton4.setText("Buscar");
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 170, 93, -1));
+
         jLabel4.setText("Historial Clientes");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, -1, -1));
 
         jLabel5.setText("Pistar Reservadas");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 240, -1, -1));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -129,25 +170,27 @@ public class Vista_reserva extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        jButton1.setText("Añadir");
-
-        jButton2.setText("Eliminar");
-
-        jButton3.setText("Modificar");
-
-        jButton4.setText("Buscar");
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, -1, 117));
 
         jButton5.setText("Añadir");
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, 94, -1));
 
         jButton6.setText("Eliminar");
+        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, 85, -1));
 
         jButton7.setText("Modificar");
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 390, 96, -1));
 
         jButton8.setText("Buscar");
+        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 390, 89, -1));
 
-        jButton9.setText("Llamada Rapida");
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Andor\\Documents\\NetBeansProjects\\Bolera_Final\\Imagenes\\Usu.jpg")); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 200, 161));
 
         jButton10.setText("Correo Rapido");
+        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 120, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 450));
 
         MenuInicio.setText("Reservaciones");
 
@@ -173,98 +216,6 @@ public class Vista_reserva extends javax.swing.JFrame {
         jMenuBar1.add(MenuInicio);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jCalendar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton10)
-                            .addComponent(jButton9))
-                        .addGap(66, 66, 66)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addGap(168, 168, 168))))))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(182, 182, 182))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jButton9)
-                                .addGap(52, 52, 52)
-                                .addComponent(jButton10)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton4))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton5)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jButton6)
-                                .addComponent(jButton7)
-                                .addComponent(jButton8)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -333,8 +284,11 @@ public class Vista_reserva extends javax.swing.JFrame {
     public javax.swing.JMenuItem jMenuItem1;
     public javax.swing.JMenuItem jMenuItem2;
     public javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable2;
     public javax.swing.JTable jTable3;
     // End of variables declaration//GEN-END:variables

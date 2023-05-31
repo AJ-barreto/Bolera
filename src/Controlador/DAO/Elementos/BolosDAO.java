@@ -38,7 +38,8 @@ public class BolosDAO implements BolosDaoInterface{
             while (resultSet.next()) {
                 Modelo_bolos model = new Modelo_bolos(
                    resultSet.getInt("Cod_elemento"),
-                   resultSet.getInt("Peso_bol")
+                   resultSet.getInt("Peso_bol"),
+                   resultSet.getString("Color")
                 );
                 lista.add(model);
             }
@@ -53,7 +54,7 @@ public class BolosDAO implements BolosDaoInterface{
     }
     
     public void create(Modelo_bolos model) {
-       String sql = "insert into ELEMENTO_BOLERA_BOLOS (Cod_elemento, Peso_bol) values (?, ?)";
+       String sql = "insert into ELEMENTO_BOLERA_BOLOS (Peso_bol, Color) values (?, ?)";
        
         try{
             Modelo_bolos modelUpdate = (Modelo_bolos) model;
@@ -61,8 +62,8 @@ public class BolosDAO implements BolosDaoInterface{
             PreparedStatement statement;
             statement = connector.getConnection().prepareStatement(sql);
             
-            statement.setInt(1, modelUpdate.getCod_elemento());
-            statement.setInt(2, modelUpdate.getPeso_bolo());
+            statement.setInt(1, modelUpdate.getPeso_bolo());
+            statement.setString(2, modelUpdate.getColor());
                     
             statement.executeUpdate();
             
@@ -91,7 +92,7 @@ public class BolosDAO implements BolosDaoInterface{
     }
     
     public void update(Modelo_bolos model) {
-        String sql = "update ELEMENTO_BOLERA_BOLOS set Peso_bol= ? where Cod_elemento = ?";
+        String sql = "update ELEMENTO_BOLERA_BOLOS set Peso_bol= ? , Color = ? where Cod_elemento = ?";
        
         try{
             Modelo_bolos modelUpdate = (Modelo_bolos) model;
@@ -100,8 +101,8 @@ public class BolosDAO implements BolosDaoInterface{
             statement = connector.getConnection().prepareStatement(sql);
             
             statement.setInt(1, modelUpdate.getPeso_bolo());
-            
-            statement.setInt(2, modelUpdate.getCod_elemento());
+            statement.setString(2, modelUpdate.getColor());
+            statement.setInt(3, modelUpdate.getCod_elemento());
                     
             statement.executeUpdate();
             
@@ -128,7 +129,9 @@ public class BolosDAO implements BolosDaoInterface{
             if (resultSet.next()){
                 model = new Modelo_bolos(
                    resultSet.getInt("Cod_elemento"),
-                   resultSet.getInt("Peso_bol"));
+                   resultSet.getInt("Peso_bol"),
+                   resultSet.getString("Color")
+                );
             }
             
             resultSet.close();

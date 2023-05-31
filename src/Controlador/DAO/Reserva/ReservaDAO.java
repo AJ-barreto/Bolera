@@ -39,11 +39,12 @@ public class ReservaDAO implements ReservaDaoInterface{
             while (resultSet.next()) {
                 Modelo_reserva model = new Modelo_reserva(
                    resultSet.getInt("NO_reserva"),
-                   resultSet.getString("Fecha_hora"),
+                   resultSet.getString("Fecha"),
+                   resultSet.getString("Hora"),
                    resultSet.getBoolean("Estado"),
                    resultSet.getInt("Valor_total"),
                    resultSet.getInt("PISTA_NO_pista"),
-                   resultSet.getInt("CLIENTE_ID_identificacion")
+                   resultSet.getInt("CLIENTE_ID")
                 );
                 lista.add(model);
             }
@@ -58,7 +59,7 @@ public class ReservaDAO implements ReservaDaoInterface{
     }
     
     public void create(Modelo_reserva model) {
-       String sql = "insert into FORMA_DE_PAGO (NO_reserva, Fecha_hora, Estado, Valor_total, PISTA_NO_pista, CLIENTE_ID_identificacion) values (?, ?, ?, ?, ?, ?)";
+       String sql = "insert into FORMA_DE_PAGO (Fecha, Hora, Estado, Valor_total, PISTA_NO_pista, CLIENTE_ID) values (?, ?, ?, ?, ?, ?)";
        
         try{
             Modelo_reserva modelUpdate = (Modelo_reserva) model;
@@ -66,8 +67,8 @@ public class ReservaDAO implements ReservaDaoInterface{
             PreparedStatement statement;
             statement = connector.getConnection().prepareStatement(sql);
             
-            statement.setInt(1, modelUpdate.getNo_reserva());
-            statement.setString(2, modelUpdate.getFecha());
+            statement.setString(1, modelUpdate.getFecha());
+            statement.setString(2, modelUpdate.getHora());
             statement.setBoolean(3, modelUpdate.isEstado());
             statement.setInt(4, modelUpdate.getValor_total());
             statement.setInt(5, modelUpdate.getNo_pista());
@@ -100,7 +101,7 @@ public class ReservaDAO implements ReservaDaoInterface{
     }
     
     public void update(Modelo_reserva model) {
-        String sql = "update FORMA_DE_PAGO set Fecha_hora = ?, Estado = ?, Valor_total = ?, PISTA_NO_pista = ?, CLIENTE_ID_identificacion = ? where NO_reserva = ?";
+        String sql = "update FORMA_DE_PAGO set Fecha = ?, Hora = ?, Estado = ?, Valor_total = ?, PISTA_NO_pista = ?, CLIENTE_ID = ? where NO_reserva = ?";
        
         try{
             Modelo_reserva modelUpdate = (Modelo_reserva) model;
@@ -109,11 +110,12 @@ public class ReservaDAO implements ReservaDaoInterface{
             statement = connector.getConnection().prepareStatement(sql);
             
             statement.setString(1, modelUpdate.getFecha());
-            statement.setBoolean(2, modelUpdate.isEstado());
-            statement.setInt(3, modelUpdate.getValor_total());
-            statement.setInt(4, modelUpdate.getNo_pista());
-            statement.setInt(5, modelUpdate.getId());
-            statement.setInt(6, modelUpdate.getNo_reserva());
+            statement.setString(2, modelUpdate.getHora());
+            statement.setBoolean(3, modelUpdate.isEstado());
+            statement.setInt(4, modelUpdate.getValor_total());
+            statement.setInt(5, modelUpdate.getNo_pista());
+            statement.setInt(6, modelUpdate.getId());
+            statement.setInt(7, modelUpdate.getNo_reserva());
                     
             statement.executeUpdate();
             
@@ -140,11 +142,12 @@ public class ReservaDAO implements ReservaDaoInterface{
             if (resultSet.next()){
                 model = new Modelo_reserva(
                    resultSet.getInt("NO_reserva"),
-                   resultSet.getString("Fecha_hora"),
+                   resultSet.getString("Fecha"),
+                   resultSet.getString("Hora"),
                    resultSet.getBoolean("Estado"),
                    resultSet.getInt("Valor_total"),
                    resultSet.getInt("PISTA_NO_pista"),
-                   resultSet.getInt("CLIENTE_ID_identificacion"));
+                   resultSet.getInt("CLIENTE_ID"));
             }
             
             resultSet.close();

@@ -37,7 +37,8 @@ public class ClienteDAO implements ClienteDaoInterface{
         
             while (resultSet.next()) {
                 Modelo_cliente model = new Modelo_cliente(
-                   resultSet.getInt("ID_identificacion"),
+                   resultSet.getInt("ID"),
+                   resultSet.getInt("identificacion"),
                    resultSet.getString("Nombre"),
                    resultSet.getString("Fecha_nac"),
                    resultSet.getString("Genero"),
@@ -56,7 +57,7 @@ public class ClienteDAO implements ClienteDaoInterface{
     }
     
     public void create(Modelo_cliente model) {
-       String sql = "insert into CLIENTE (ID_identificacion, Nombre, Fecha_nac, Genero, Inactividad) values (?, ?, ?, ?, ?)";
+       String sql = "insert into CLIENTE (identificacion, Nombre, Fecha_nac, Genero, Inactividad) values (?, ?, ?, ?, ?)";
        
         try{
             Modelo_cliente modelUpdate = (Modelo_cliente) model;
@@ -64,7 +65,7 @@ public class ClienteDAO implements ClienteDaoInterface{
             PreparedStatement statement;
             statement = connector.getConnection().prepareStatement(sql);
             
-            statement.setInt(1, modelUpdate.getId());
+            statement.setInt(1, modelUpdate.getCedula());
             statement.setString(2, modelUpdate.getNombre());
             statement.setString(3, modelUpdate.getFecha());
             statement.setString(4, modelUpdate.getGenero());
@@ -80,7 +81,7 @@ public class ClienteDAO implements ClienteDaoInterface{
     }
     
     public void deleteById(int id) {
-        String sql = "delete from CLIENTE where ID_identificacion = ?";
+        String sql = "delete from CLIENTE where ID = ?";
         
         try{            
             PreparedStatement statement;
@@ -97,7 +98,7 @@ public class ClienteDAO implements ClienteDaoInterface{
     }
     
     public void update(Modelo_cliente model) {
-        String sql = "update CLIENTE set Nombre = ?, Fecha_nac = ?, Genero = ?, Inactividad = ? where ID_identificacion = ?";
+        String sql = "update CLIENTE set Nombre = ?, Fecha_nac = ?, Genero = ?, Inactividad = ? where ID = ?";
        
         try{
             Modelo_cliente modelUpdate = (Modelo_cliente) model;
@@ -121,7 +122,7 @@ public class ClienteDAO implements ClienteDaoInterface{
     }
     
     public Modelo_cliente findById(int id) {
-        String sql = "select * from CLIENTE where ID_identificacion = ?";
+        String sql = "select * from CLIENTE where ID = ?";
         Modelo_cliente model = null;
          
         try{
@@ -135,7 +136,8 @@ public class ClienteDAO implements ClienteDaoInterface{
             
             if (resultSet.next()){
                 model = new Modelo_cliente(
-                   resultSet.getInt("ID_identificacion"),
+                   resultSet.getInt("ID"),
+                   resultSet.getInt("identificacion"),
                    resultSet.getString("Nombre"),
                    resultSet.getString("Fecha_nac"),
                    resultSet.getString("Genero"),

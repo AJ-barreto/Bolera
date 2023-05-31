@@ -82,10 +82,15 @@ public class ProductosDAO implements ProductosDaoInterface{
     }
     
     public void deleteById(int id) {
+        String sql2 = "SET FOREIGN_KEY_CHECKS = 0 ;";
         String sql = "delete from PRODUCTO_CONSUMIBLE where COD_producto = ?";
         
         try{            
             PreparedStatement statement;
+            statement = connector.getConnection().prepareStatement(sql2);            
+            statement.executeUpdate();
+            
+            //PreparedStatement statement;
             statement = connector.getConnection().prepareStatement(sql);            
             statement.setString(1, id + "");
 

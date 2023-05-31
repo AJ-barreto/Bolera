@@ -22,6 +22,7 @@ import Vista.Vista_inicio;
 import Vista.Vista_reserva;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -60,23 +61,28 @@ public class Controlador_elementos implements ActionListener{
         this.view.jButton10.addActionListener(this);
         this.view.jButton11.addActionListener(this);
         this.view.jButton7.addActionListener(this);
+        this.view.X1.addActionListener(this);
         
         /*BOTONES CALZADO*/
         this.view.jButton8.addActionListener(this);
         this.view.jButton9.addActionListener(this);
         this.view.jButton12.addActionListener(this);
         this.view.jButton13.addActionListener(this);
+        this.view.X.addActionListener(this);
         
         /*BOTONES PISTA*/
         this.view.jButton14.addActionListener(this);
         this.view.jButton15.addActionListener(this);
         this.view.jButton16.addActionListener(this);
         this.view.jButton17.addActionListener(this);
+        this.view.X2.addActionListener(this);
+        
         /*BOTONES PRODUCTOS*/
         this.view.jButton3.addActionListener(this);
         this.view.jButton4.addActionListener(this);
         this.view.jButton5.addActionListener(this);
         this.view.jButton1.addActionListener(this);
+        this.view.X3.addActionListener(this);
         
     }
     
@@ -162,6 +168,31 @@ public class Controlador_elementos implements ActionListener{
             Modelo_bolos model = bolosDao.findById(codBolo);
             JOptionPane.showMessageDialog(view, "Cod_elemento: "+model.getCod_elemento()+"// Peso_bolo: "+model.getPeso_bolo()+"// Color del bolo: "+model.getColor());
         }
+        
+        if(e.getSource() == this.view.X1){
+            int i = JOptionPane.showConfirmDialog(this.view,"¿Estás seguro de eliminar el registro?");
+            int codCalz;
+            int fila = this.view.jTable5.getSelectedRow();
+            //i == 0 : SI;
+            //i == 1 : NO;
+            //i == 2 : CANCELAR;
+            if(i==0){
+                if(fila >= 0){
+                    try {
+                        codCalz = Integer.parseInt((String) this.view.jTable5.getValueAt(fila, 0));
+                        bolosDao.deleteById(codCalz);
+                        actualizar();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Controlador_elementos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this.view, "Seleccione una fila por favor");
+                }
+            } else if (i == 1){
+                JOptionPane.showMessageDialog(this.view, "Se ha cancelado eliminar un registro");
+            }
+        }
         /////////////////////////////*BOTONES DE CALZADO*/////////////////////////
         if(e.getSource() == this.view.jButton9){
             try {
@@ -206,6 +237,31 @@ public class Controlador_elementos implements ActionListener{
             int codCalz = Integer.parseInt(dato);
             Modelo_calzado model = calzadoDao.findById(codCalz);
             JOptionPane.showMessageDialog(view, "Cod_calzado: "+model.getCod_calzado()+"// Numero de calzado: "+model.getCalzado_numero()+"Color del Calzado: "+model.getCalzado_color());
+        }
+        
+        if(e.getSource() == this.view.X){
+            int i = JOptionPane.showConfirmDialog(this.view,"¿Estás seguro de eliminar el registro?");
+            int codCalz;
+            int fila = this.view.jTable4.getSelectedRow();
+            //i == 0 : SI;
+            //i == 1 : NO;
+            //i == 2 : CANCELAR;
+            if(i==0){
+                if(fila >= 0){
+                    try {
+                        codCalz = Integer.parseInt((String) this.view.jTable4.getValueAt(fila, 0));
+                        calzadoDao.deleteById(codCalz);
+                        actualizar();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Controlador_elementos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this.view, "Seleccione una fila por favor");
+                }
+            } else if (i == 1){
+                JOptionPane.showMessageDialog(this.view, "Se ha cancelado eliminar un registro");
+            }
         }
         
         /////////////////////////////*BOTONES DE PISTA*/////////////////////////
@@ -257,6 +313,32 @@ public class Controlador_elementos implements ActionListener{
             Modelo_pista model = pistaDao.findById(numPista);
             JOptionPane.showMessageDialog(view, "NO_pista: "+model.getNo_Pista()+"// Ubicacion: "+model.getUbicacion()+"// Estado: "+model.isLibre()+"// Activo: "+model.isLibre());
         }
+        
+        if(e.getSource() == this.view.X2){
+            int i = JOptionPane.showConfirmDialog(this.view,"¿Estás seguro de eliminar el registro?");
+            int codCalz;
+            int fila = this.view.jTable3.getSelectedRow();
+            //i == 0 : SI;
+            //i == 1 : NO;
+            //i == 2 : CANCELAR;
+            if(i==0){
+                if(fila >= 0){
+                    try {
+                        codCalz = Integer.parseInt((String) this.view.jTable3.getValueAt(fila, 0));
+                        pistaDao.deleteById(codCalz);
+                        actualizar();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Controlador_elementos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this.view, "Seleccione una fila por favor");
+                }
+            } else if (i == 1){
+                JOptionPane.showMessageDialog(this.view, "Se ha cancelado eliminar un registro");
+            }
+        }
+        
         /////////////////////////////*BOTONES DE PRODUCTOS*/////////////////////////
         if(e.getSource() == this.view.jButton4){
             try {
@@ -311,6 +393,31 @@ public class Controlador_elementos implements ActionListener{
             int codProd = Integer.parseInt(dato);
             Modelo_productos model = productoDao.findById(codProd);
             JOptionPane.showMessageDialog(view, "Cod producto: "+model.getCod_producto()+"// Descripcion: "+model.getDescripcion()+"// Valor_compra: "+model.getValor_compra()+"// Valor venta: "+model.getValor_venta()+"// Cantidad existente: "+model.getCantidad( ));
+        }
+        
+        if(e.getSource() == this.view.X3){
+            int i = JOptionPane.showConfirmDialog(this.view,"¿Estás seguro de eliminar el registro?");
+            int codCalz;
+            int fila = this.view.jTable2.getSelectedRow();
+            //i == 0 : SI;
+            //i == 1 : NO;
+            //i == 2 : CANCELAR;
+            if(i==0){
+                if(fila >= 0){
+                    try {
+                        codCalz = Integer.parseInt((String) this.view.jTable2.getValueAt(fila, 0));
+                        productoDao.deleteById(codCalz);
+                        actualizar();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Controlador_elementos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this.view, "Seleccione una fila por favor");
+                }
+            } else if (i == 1){
+                JOptionPane.showMessageDialog(this.view, "Se ha cancelado eliminar un registro");
+            }
         }
     }
     

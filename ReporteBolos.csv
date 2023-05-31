@@ -1,10 +1,8 @@
-1 , 6
-2 , 7
-3 , 8
-4 , 9
-5 , 10
-1 , 6
-2 , 7
-3 , 8
-4 , 9
-5 , 10
+NO_Bolo | Peso_Bolo| Color_Bolo 
+1 , 6 , Negro
+2 , 7 , Blanco
+3 , 8 , Verde
+4 , 9 , Morado
+5 , 10 , Azul
+
+Cantidad de bolos actuales: 5

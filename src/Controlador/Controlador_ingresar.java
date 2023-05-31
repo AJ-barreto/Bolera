@@ -33,11 +33,12 @@ public class Controlador_ingresar implements ActionListener{
     }
     
     public void actionPerformed(ActionEvent e){
-        model.setUsusario(view.TextUsuario.getText());
-        model.setContraseña(view.TextContra.getText());
-        model.inicioSesion();
-        if(model.inicioSesion()){
-            JOptionPane.showConfirmDialog(view, "Inicio Sesion Correcto");
+        if(e.getSource() == this.view.buttonInicio){
+            model.setUsusario(view.TextUsuario.getText());
+            model.setContraseña(view.TextContra.getText());
+            model.inicioSesion();
+            if(model.inicioSesion()){
+            JOptionPane.showMessageDialog(view, "Inicio Sesion Correcto");
             
             Modelo_inicio mod = new Modelo_inicio();
             Vista_inicio vist = new Vista_inicio();
@@ -47,13 +48,13 @@ public class Controlador_ingresar implements ActionListener{
             vist.setVisible(true);
             
             this.view.close();
-        } else {
-            JOptionPane.showConfirmDialog(view, "Contraseña o Usuario Incorrecto");
+            } else {
+            JOptionPane.showMessageDialog(view, "Contraseña o Usuario Incorrecto");
+            }
         }
-    }
-
-    private ActionListener actionPerform() {
-        JOptionPane.showConfirmDialog(view, "Se ha cancelado el inicio de Sesion");
-        return null;
+        if(e.getSource() == this.view.ButtonCancelar){
+            JOptionPane.showConfirmDialog(view, "Se ha cancelado el inicio de Sesion");
+        }
+        
     }
 }

@@ -78,10 +78,15 @@ public class PistaDAO implements PistaDaoInterface{
     }
     
     public void deleteById(int id) {
+        String sql2 = "SET FOREIGN_KEY_CHECKS = 0 ;";
         String sql = "delete from PISTA where NO_pista = ?";
         
-        try{            
+        try{
             PreparedStatement statement;
+            statement = connector.getConnection().prepareStatement(sql2);            
+            statement.executeUpdate();
+            
+            //PreparedStatement statement;
             statement = connector.getConnection().prepareStatement(sql);            
             statement.setString(1, id + "");
 

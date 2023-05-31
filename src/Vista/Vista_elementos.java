@@ -19,10 +19,10 @@ import javax.swing.table.DefaultTableModel;
  * @author Andor
  */
 public class Vista_elementos extends javax.swing.JFrame {
-    DefaultTableModel modelTablePista = new DefaultTableModel();
-    DefaultTableModel modelTableCalzado = new DefaultTableModel();
-    DefaultTableModel modelTableProductos = new DefaultTableModel();
-    DefaultTableModel modelTableBolos = new DefaultTableModel();
+    public DefaultTableModel modelTablePista = new DefaultTableModel();
+    public DefaultTableModel modelTableCalzado = new DefaultTableModel();
+    public DefaultTableModel modelTableProductos = new DefaultTableModel();
+    public DefaultTableModel modelTableBolos = new DefaultTableModel();
     /**
      * Creates new form AlmacenJFrame
      */
@@ -112,15 +112,9 @@ public class Vista_elementos extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
         jCalendar1 = new com.toedter.calendar.JCalendar();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -139,12 +133,22 @@ public class Vista_elementos extends javax.swing.JFrame {
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator1 = new javax.swing.JSeparator();
+        X = new javax.swing.JButton();
+        X1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        X2 = new javax.swing.JButton();
+        X3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuInicio = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -173,24 +177,6 @@ public class Vista_elementos extends javax.swing.JFrame {
         jLabel4.setText("Pistas de bolos");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 6, -1, -1));
 
-        jLabel5.setText("Productos");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(727, 228, -1, -1));
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 256, 432, 117));
-
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -204,17 +190,8 @@ public class Vista_elementos extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable3);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 28, 432, 133));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 28, 450, 133));
         getContentPane().add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 18, 258, 155));
-
-        jButton3.setText("Añadir");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 391, 90, -1));
-
-        jButton4.setText("Eliminar");
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 391, 90, -1));
-
-        jButton5.setText("Modificar");
-        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(769, 391, 90, -1));
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -259,10 +236,10 @@ public class Vista_elementos extends javax.swing.JFrame {
         getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(252, 396, 90, -1));
 
         jButton9.setText("Eliminar");
-        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 396, 86, -1));
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 396, -1, -1));
 
         jButton10.setText("Eliminar");
-        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(134, 391, 82, -1));
+        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(116, 391, 80, -1));
 
         jButton7.setText("Modificar");
         getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 431, 90, -1));
@@ -288,13 +265,10 @@ public class Vista_elementos extends javax.swing.JFrame {
         getContentPane().add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 173, 90, -1));
 
         jButton16.setText("Modificar");
-        getContentPane().add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 173, 90, -1));
+        getContentPane().add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 173, 90, -1));
 
         jButton17.setText("Buscar");
-        getContentPane().add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(877, 173, 90, -1));
-
-        jButton1.setText("Buscar");
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(877, 391, 90, -1));
+        getContentPane().add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(897, 173, 90, -1));
 
         jSeparator4.setBackground(new java.awt.Color(102, 102, 255));
         jSeparator4.setForeground(new java.awt.Color(102, 102, 255));
@@ -322,6 +296,48 @@ public class Vista_elementos extends javax.swing.JFrame {
         jSeparator1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 255)));
         jSeparator1.setOpaque(true);
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 210, 500, 10));
+
+        X.setText("X");
+        jPanel1.add(X, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 20, 30));
+
+        X1.setText("X");
+        jPanel1.add(X1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, 20, 30));
+
+        jLabel5.setText("Productos");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 240, -1, -1));
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 270, 440, 117));
+
+        jButton3.setText("Añadir");
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 90, -1));
+
+        jButton4.setText("Eliminar");
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 410, 90, -1));
+
+        jButton5.setText("Modificar");
+        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 410, 100, -1));
+
+        jButton1.setText("Buscar");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 410, 90, -1));
+
+        X2.setText("X");
+        jPanel1.add(X2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 170, 20, 30));
+
+        X3.setText("X");
+        jPanel1.add(X3, new org.netbeans.lib.awtextra.AbsoluteConstraints(747, 403, 20, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 460));
 
@@ -400,6 +416,10 @@ public class Vista_elementos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JMenu MenuInicio;
+    public javax.swing.JButton X;
+    public javax.swing.JButton X1;
+    public javax.swing.JButton X2;
+    public javax.swing.JButton X3;
     public javax.swing.JButton jButton1;
     public javax.swing.JButton jButton10;
     public javax.swing.JButton jButton11;

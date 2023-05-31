@@ -1,5 +1,10 @@
-1 , Ala norte , true
-2 , Ala sur , true
-3 , Ala este , true
-4 , Ala oeste , false
-5 , Ala norte , false
+NO_Pista | Ubicacion | Libre | Activa 
+1 , Ala norte , true , true
+2 , Ala sur , true , true
+3 , Ala este , true , true
+4 , Ala oeste , false , true
+5 , Ala norte , false , true
+
+Cantidad de pistas actuales: 5
+Cantidad de pista disponibles: 5
+Cantidad de pista NO disponibles: 0

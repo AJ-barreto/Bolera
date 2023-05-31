@@ -1,5 +1,8 @@
-1 , 37
-2 , 38
-3 , 39
-4 , 40
-5 , 41
+NO_Calzado | Numero de Calzado| Color del Calzado 
+1 , 37 , Negro
+2 , 38 , Blanco
+3 , 39 , Verde
+4 , 40 , Morado
+5 , 41 , Azul
+
+Cantidad de calzados actuales: 5

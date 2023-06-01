@@ -34,7 +34,7 @@ public class Modelo_ingresar {
     ////////////
     
     public boolean inicioSesion(){
-        if(this.usuario.equals("a") && this.contraseña.equals("a")){
+        if(this.usuario.equals("Andres") && this.contraseña.equals("a")){
         return true;
         } else {
             return false;

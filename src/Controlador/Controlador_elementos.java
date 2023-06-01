@@ -166,7 +166,7 @@ public class Controlador_elementos implements ActionListener{
             String dato = JOptionPane.showInputDialog(null,"Digita el cod a buscar");
             int codBolo = Integer.parseInt(dato);
             Modelo_bolos model = bolosDao.findById(codBolo);
-            JOptionPane.showMessageDialog(view, "Cod_elemento: "+model.getCod_elemento()+"// Peso_bolo: "+model.getPeso_bolo()+"// Color del bolo: "+model.getColor());
+            JOptionPane.showMessageDialog(view, "CODIGO del bolo: "+model.getCod_elemento()+"// PESO del bolo: "+model.getPeso_bolo()+"// COLOR del bolo: "+model.getColor());
         }
         
         if(e.getSource() == this.view.X1){
@@ -236,7 +236,7 @@ public class Controlador_elementos implements ActionListener{
             String dato = JOptionPane.showInputDialog(null,"Digita el cod a buscar");
             int codCalz = Integer.parseInt(dato);
             Modelo_calzado model = calzadoDao.findById(codCalz);
-            JOptionPane.showMessageDialog(view, "Cod_calzado: "+model.getCod_calzado()+"// Numero de calzado: "+model.getCalzado_numero()+"Color del Calzado: "+model.getCalzado_color());
+            JOptionPane.showMessageDialog(view, "CODIGO de calzado: "+model.getCod_calzado()+"// NUMERO de calzado: "+model.getCalzado_numero()+"COLOR del Calzado: "+model.getCalzado_color());
         }
         
         if(e.getSource() == this.view.X){
@@ -311,7 +311,7 @@ public class Controlador_elementos implements ActionListener{
             String dato = JOptionPane.showInputDialog(null,"Digita el número de la pista a buscar");
             int numPista = Integer.parseInt(dato);
             Modelo_pista model = pistaDao.findById(numPista);
-            JOptionPane.showMessageDialog(view, "NO_pista: "+model.getNo_Pista()+"// Ubicacion: "+model.getUbicacion()+"// Estado: "+model.isLibre()+"// Activo: "+model.isLibre());
+            JOptionPane.showMessageDialog(view, "NUMERO de pista: "+model.getNo_Pista()+"// UBICACION: "+model.getUbicacion()+"// ESTADO: "+model.isLibre()+"// ACTIVO: "+model.isLibre());
         }
         
         if(e.getSource() == this.view.X2){
@@ -392,7 +392,7 @@ public class Controlador_elementos implements ActionListener{
             String dato = JOptionPane.showInputDialog(null,"Digita el número de la pista a buscar");
             int codProd = Integer.parseInt(dato);
             Modelo_productos model = productoDao.findById(codProd);
-            JOptionPane.showMessageDialog(view, "Cod producto: "+model.getCod_producto()+"// Descripcion: "+model.getDescripcion()+"// Valor_compra: "+model.getValor_compra()+"// Valor venta: "+model.getValor_venta()+"// Cantidad existente: "+model.getCantidad( ));
+            JOptionPane.showMessageDialog(view, "CODIGO del producto: "+model.getCod_producto()+"// DESCRIPCION: "+model.getDescripcion()+"// VALOR de la compra: "+model.getValor_compra()+"// VALOR de la venta: "+model.getValor_venta()+"// CANTIDAD existente: "+model.getCantidad( ));
         }
         
         if(e.getSource() == this.view.X3){

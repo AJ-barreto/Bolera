@@ -53,12 +53,14 @@ public class Controlador_reserva implements ActionListener{
         this.view.jButton2.addActionListener(this);
         this.view.jButton3.addActionListener(this);
         this.view.jButton4.addActionListener(this);
+        this.view.X.addActionListener(this);
         
         /*BOTONES RESERVA*/
         this.view.jButton5.addActionListener(this);
         this.view.jButton6.addActionListener(this);
         this.view.jButton7.addActionListener(this);
         this.view.jButton8.addActionListener(this);
+        this.view.X2.addActionListener(this);
     }
     
     public void inciar(){
@@ -151,7 +153,31 @@ public class Controlador_reserva implements ActionListener{
             String dato = JOptionPane.showInputDialog(null,"Digita el cod a buscar");
             int id = Integer.parseInt(dato);
             Modelo_cliente model = clienteDao.findById(id);
-            JOptionPane.showMessageDialog(view, "Identificacion: "+model.getId()+"// Nombre: "+model.getNombre()+"// Fecha de nacimiento: "+model.getFecha()+"// Genero: "+model.getGenero()+"// Inactividad: "+model.getInactividad());
+            JOptionPane.showMessageDialog(view, "ID: "+model.getId()+"// CEDULA: "+model.getCedula()+"// NOMBRE: "+model.getNombre()+"// FECHA de nacimiento: "+model.getFecha()+"// GENERO: "+model.getGenero()+"// INACTIVIDAD: "+model.getInactividad());
+        }
+        if(e.getSource() == this.view.X){
+            int i = JOptionPane.showConfirmDialog(this.view,"¿Estás seguro de eliminar el registro?");
+            int codCalz;
+            int fila = this.view.jTable3.getSelectedRow();
+            //i == 0 : SI;
+            //i == 1 : NO;
+            //i == 2 : CANCELAR;
+            if(i==0){
+                if(fila >= 0){
+                    try {
+                        codCalz = Integer.parseInt((String) this.view.jTable3.getValueAt(fila, 0));
+                        clienteDao.deleteById(codCalz);
+                        actualizar();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Controlador_elementos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this.view, "Seleccione una fila por favor");
+                }
+            } else if (i == 1){
+                JOptionPane.showMessageDialog(this.view, "Se ha cancelado eliminar un registro");
+            }
         }
         /////////////////////////////*BOTONES DE RESERVA*/////////////////////////
         if(e.getSource() == this.view.jButton6){
@@ -210,7 +236,31 @@ public class Controlador_reserva implements ActionListener{
             String dato1 = JOptionPane.showInputDialog(null,"Introduce el número de reserva");
                 int codReserva = Integer.parseInt(dato1);
             Modelo_reserva model = reservaDao.findById(codReserva);
-            JOptionPane.showMessageDialog(view, "NO_reserva: "+model.getNo_reserva()+"// Fecha: "+model.getFecha()+"// Estado: "+model.isEstado()+"// Valot total: "+model.getValor_total()+"// Pista: "+model.getNo_pista()+"// cliente: "+model.getId());
+            JOptionPane.showMessageDialog(view, "NUMERO de reserva: "+model.getNo_reserva()+"// FECHA: "+model.getFecha()+"// HORA: "+model.getHora()+"// ESTADO: "+model.isEstado()+"// VALOR total: "+model.getValor_total()+"// PISTA: "+model.getNo_pista()+"// CLIENTE: "+model.getId());
+        }
+        if(e.getSource() == this.view.X2){
+            int i = JOptionPane.showConfirmDialog(this.view,"¿Estás seguro de eliminar el registro?");
+            int codCalz;
+            int fila = this.view.jTable2.getSelectedRow();
+            //i == 0 : SI;
+            //i == 1 : NO;
+            //i == 2 : CANCELAR;
+            if(i==0){
+                if(fila >= 0){
+                    try {
+                        codCalz = Integer.parseInt((String) this.view.jTable2.getValueAt(fila, 0));
+                        reservaDao.deleteById(codCalz);
+                        actualizar();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Controlador_elementos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this.view, "Seleccione una fila por favor");
+                }
+            } else if (i == 1){
+                JOptionPane.showMessageDialog(this.view, "Se ha cancelado eliminar un registro");
+            }
         }
     }
     

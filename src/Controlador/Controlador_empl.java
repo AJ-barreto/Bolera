@@ -43,11 +43,12 @@ public class Controlador_empl implements ActionListener{
         this.view.jMenuItem2.addActionListener(this);
         this.view.jMenuItem3.addActionListener(this);
         
-        /*BOTONES BOLOS*/
+        /*BOTONES EMPLEADO*/
         this.view.jButton1.addActionListener(this);
         this.view.jButton2.addActionListener(this);
         this.view.jButton3.addActionListener(this);
         this.view.jButton4.addActionListener(this);
+        this.view.X.addActionListener(this);
     }
     
     public void inciar(){
@@ -144,7 +145,31 @@ public class Controlador_empl implements ActionListener{
             String dato = JOptionPane.showInputDialog(null,"Digita la cedula a buscar");
             int cedEmpleado = Integer.parseInt(dato);
             Modelo_empleado model = empleadoDao.findById(cedEmpleado);
-            JOptionPane.showMessageDialog(view, "Cod empleado: "+model.getId()+"// Cedula: "+model.getCedula()+"// Nombre: "+model.getNombre()+"// Fecha de nacimiento: "+model.getFecha()+"// Genero: "+model.getGenero()+"// Sueldo: "+model.getSueldo()+"// Vacaciones: "+model.isVacaciones());
+            JOptionPane.showMessageDialog(view, "CODIGO empleado: "+model.getId()+"// CEDULA: "+model.getCedula()+"// NOMBRE: "+model.getNombre()+"// FECHA de nacimiento: "+model.getFecha()+"// GENERO: "+model.getGenero()+"// SUELDO: "+model.getSueldo()+"// VACACIONES: "+model.isVacaciones());
+        }
+        if(e.getSource() == this.view.X){
+            int i = JOptionPane.showConfirmDialog(this.view,"¿Estás seguro de eliminar el registro?");
+            int codCalz;
+            int fila = this.view.jTable3.getSelectedRow();
+            //i == 0 : SI;
+            //i == 1 : NO;
+            //i == 2 : CANCELAR;
+            if(i==0){
+                if(fila >= 0){
+                    try {
+                        codCalz = Integer.parseInt((String) this.view.jTable3.getValueAt(fila, 0));
+                        empleadoDao.deleteById(codCalz);
+                        actualizar();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(Controlador_elementos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this.view, "Seleccione una fila por favor");
+                }
+            } else if (i == 1){
+                JOptionPane.showMessageDialog(this.view, "Se ha cancelado eliminar un registro");
+            }
         }
     }
     

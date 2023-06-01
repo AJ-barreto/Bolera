@@ -3,8 +3,7 @@ ID | Cedula | Nombre | Fecha de nacimiento | Genero | Sueldo | Vacaciones
 2 , 1000245685 , Mateo Gomez , 1990-01-31 , M , 1000000
 3 , 1234567890 , Ana Valeria , 1995-06-11 , F , 1000000
 4 , 1234567890 , Laura Sofia , 1995-08-25 , F , 1000000
-5 , 1234567890 , Nicolas , 1990-02-06 , M , 1000000
 
-Cantidad de empleados actuales: 5
-Cantidad de empleados en Vacaciones: 1
+Cantidad de empleados actuales: 4
+Cantidad de empleados en Vacaciones: 0
 Cantidad de empleados Disponibles: 4

@@ -96,6 +96,8 @@ public class Vista_reserva extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
+        X = new javax.swing.JButton();
+        X2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         MenuInicio = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -146,7 +148,7 @@ public class Vista_reserva extends javax.swing.JFrame {
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, 93, -1));
 
         jButton3.setText("Modificar");
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, 93, -1));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 170, 90, -1));
 
         jButton4.setText("Buscar");
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 170, 93, -1));
@@ -179,7 +181,7 @@ public class Vista_reserva extends javax.swing.JFrame {
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, 85, -1));
 
         jButton7.setText("Modificar");
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 390, 96, -1));
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 390, 90, -1));
 
         jButton8.setText("Buscar");
         jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 390, 89, -1));
@@ -189,6 +191,12 @@ public class Vista_reserva extends javax.swing.JFrame {
 
         jButton10.setText("Correo Rapido");
         jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 120, -1));
+
+        X.setText("X");
+        jPanel1.add(X, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 170, 20, 30));
+
+        X2.setText("X");
+        jPanel1.add(X2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 390, 20, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 450));
 
@@ -266,6 +274,8 @@ public class Vista_reserva extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JMenu MenuInicio;
+    public javax.swing.JButton X;
+    public javax.swing.JButton X2;
     public javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     public javax.swing.JButton jButton2;
@@ -289,7 +299,7 @@ public class Vista_reserva extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable2;
+    public javax.swing.JTable jTable2;
     public javax.swing.JTable jTable3;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,6 +6,7 @@ package Controlador.DAO;
 
 import database.Connector;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -28,6 +29,11 @@ public class InicioDAO {
     public void EmpleadoCSV() throws IOException{
         int suma=0, vacaciones=0, noVacaciones=0;
         BufferedWriter outStream = null;
+        
+        File file;
+        file = new File("ReporteEmpleado.csv");
+        file.delete();
+        
         outStream = new BufferedWriter(new FileWriter("ReporteEmpleado.csv", true));
         
         String sql = "SELECT * FROM EMPLEADO";
@@ -80,6 +86,9 @@ public class InicioDAO {
     public void PistaCSV() throws IOException{
         int suma=0, activo=0, noActivo=0;
         BufferedWriter outStream = null;
+        File file;
+        file = new File("ReportePistas.csv");
+        file.delete();
         outStream = new BufferedWriter(new FileWriter("ReportePistas.csv", true));
         
         String sql = "SELECT * FROM PISTA";
@@ -129,6 +138,9 @@ public class InicioDAO {
     public void BoloCSV() throws IOException{
         int suma=0;
         BufferedWriter outStream = null;
+        File file;
+        file = new File("ReporteBolos.csv");
+        file.delete();
         outStream = new BufferedWriter(new FileWriter("ReporteBolos.csv", true));
         
         String sql = "SELECT * FROM ELEMENTO_BOLERA_BOLOS";
@@ -170,6 +182,9 @@ public class InicioDAO {
     public void CalzadoCSV() throws IOException{
         int suma=0;
         BufferedWriter outStream = null;
+        File file;
+        file = new File("ReporteCalzados.csv");
+        file.delete();
         outStream = new BufferedWriter(new FileWriter("ReporteCalzados.csv", true));
         
         String sql = "SELECT * FROM ELEMENTO_BOLERA_CALZADO";
@@ -193,7 +208,7 @@ public class InicioDAO {
             }
             outStream.write("\nCantidad de calzados actuales: "+suma);
             outStream.close();
-            JOptionPane.showMessageDialog(null, "Se ha guardado exitosamente el registro");
+            JOptionPane.showMessageDialog(null, "Se ha guardado exitosamente el registro de CALZADOS");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al conectar");
         } finally {
@@ -210,6 +225,9 @@ public class InicioDAO {
     public void informeReservaCSV() throws IOException{
         BufferedWriter outStream = null;
         int suma = 0, ventas = 0, crecimiento =0, resta = 0, crecimiento_total = 0, porcentaje = 0;
+        File file;
+        file = new File("informeReservas.csv");
+        file.delete();
         outStream = new BufferedWriter(new FileWriter("InformeReservas.csv", true));
         
         String sql = "SELECT * FROM FORMA_DE_PAGO";
@@ -243,7 +261,7 @@ public class InicioDAO {
             outStream.write("\nTOTAL DE CRECIMIENTO DE LAS RESERVACIONES: "+crecimiento_total);
             outStream.write("\nPORCENTAJE DEL CRECIMIENTO DE LAS RESERVACIONES: "+porcentaje+"%");
             outStream.close();
-            JOptionPane.showMessageDialog(null, "Se ha guardado exitosamente el registro");
+            JOptionPane.showMessageDialog(null, "Se ha guardado exitosamente el registro de RESERVAS");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
             JOptionPane.showMessageDialog(null, "Error al conectar");
@@ -261,6 +279,9 @@ public class InicioDAO {
     public void informeProductoCSV() throws IOException{
         BufferedWriter outStream = null;
         int suma = 0, ventas = 0, crecimiento =0, resta = 0, crecimiento_total = 0, porcentaje = 0;
+        File file;
+        file = new File("informeProductos.csv");
+        file.delete();
         outStream = new BufferedWriter(new FileWriter("informeProductos.csv", true));
         
         String sql = "SELECT * FROM FACT_COMES";
@@ -293,7 +314,7 @@ public class InicioDAO {
             outStream.write("\nTOTAL DE CRECIMIENTO DE LA VENTA DE PRODUCTOS: "+crecimiento_total);
             outStream.write("\nPORCENTAJE DEL CRECIMIENTO DE LAS VENTAS: "+porcentaje+"%");
             outStream.close();
-            JOptionPane.showMessageDialog(null, "Se ha guardado exitosamente el registro");
+            JOptionPane.showMessageDialog(null, "Se ha guardado exitosamente el registro de PRODUCTOS");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
             JOptionPane.showMessageDialog(null, "Error al conectar");
